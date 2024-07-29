@@ -4,7 +4,11 @@
 
 1. Write a for loop that counts from 1 to 5 and prints each number.
    ```javascript
-   // Your code here
+   // 
+   for (let i = 1; i <= 5; i++) {
+    console.log(i)
+   }
+
    ```
 
 2. Create a for loop that counts from 0 to 9 and prints each number.
@@ -14,24 +18,40 @@
 
 3. Write a for loop that counts from 10 to 1 (backwards) and prints each number.
    ```javascript
-   // Your code here
+   // 
+   for (let i=10; i <=1; i-- ) {
+    console.log(i)
+   }
    ```
 
 4. Create a for loop that counts from 1 to 10, but only prints even numbers.
    ```javascript
-   // Your code here
+   // 
+   for (let i=1; i <i++ ){
+    if (i%2===0)
+    console.log(i)
+   }
+   
    ```
 
 5. Write a for loop that counts from 1 to 10, but only prints odd numbers.
    ```javascript
-   // Your code here
+   // 
+   for (let i=1; i < 10; i++ ){
+    if (i%2===1)
+    console.log(i)
+   }
+   
    ```
 
 ## Counting with Different Increments
 
 6. Create a for loop that counts from 0 to 15 by 3s (0, 3, 6, 9, 12, 15).
    ```javascript
-   // Your code here
+   // 
+   for(let i=0; i<=15;i+=3) {
+    console.log(i)
+   }
    ```
 
 7. Write a for loop that counts from 1 to 20 by 2s (1, 3, 5, ..., 19).
@@ -41,12 +61,19 @@
 
 8. Create a for loop that counts from 2 to 20 by 2s (2, 4, 6, ..., 20).
    ```javascript
-   // Your code here
+   // 
+   for (let i=2; i <=20; i+=2 ){
+    console.log(i)
+   }
+   
    ```
 
 9. Write a for loop that counts from 10 to 0 by 2s (10, 8, 6, ..., 0).
    ```javascript
-   // Your code here
+   // 
+    for (let i=10; i >= 0; i-=2) {
+    console.log(i)
+   }
    ```
 
 10. Create a for loop that counts from 5 to 25 by 5s (5, 10, 15, 20, 25).
@@ -58,27 +85,63 @@
 
 11. Write a for loop that prints "*" five times on the same line.
     ```javascript
-    // Your code here
+    // 
+       let oneLine = " "
+   for (let i=0; i <=5; i++) {
+    oneLine += "*"
+   }
+   console.log(oneLine)
+   
     ```
 
 12. Create a for loop that prints "Hello" three times, each on a new line.
     ```javascript
-    // Your code here
+    // 
+    for (let i=1; i <=3; i++) {
+    console.log("Hello")
+   }
+   
     ```
 
 13. Write a for loop that prints numbers from 1 to 3, each followed by "!".
     ```javascript
-    // Your code here
+    // 
+    
+   for (let i=1; i <=3; i++) {
+   
+    console.log(i+"!")
+   }
+
     ```
 
 14. Create a for loop that prints "A" to "E" (one letter per iteration).
     ```javascript
-    // Your code here
+
+    // ARRAY
+      let abc = ["A","B","C","D","E"];
+   for (let i = 0; i < abc.length; i++) {
+       console.log(abc[i])
+   }
+   <!-- !!!!!!!!!OR!!!!!!!!!!!! -->
+    for (let i = 0; i < 5; i++) {
+
+       console.log(String.fromCharCode (65 +i))
+   }
+   
     ```
 
 15. Write a for loop that prints "2" four times, separated by spaces.
     ```javascript
-    // Your code here
+
+    // 
+     let num = " "
+   for (let i = 0; i < 4; i++) {
+    num+= "2" + " "
+   }
+   console.log(num)
+   
+
+
     ```
 
 ## Working with Arrays

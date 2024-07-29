@@ -6,7 +6,14 @@
 // }
 
 // 2.
-let i = 1
-while (i<=15) {
-    console.log(i+=2);
-}
+// let i = 1
+// while (i<=15) {
+//     console.log(i+=2);
+// }
+
+
+// 3.
+
+
+  
+  
