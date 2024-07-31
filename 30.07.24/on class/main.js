@@ -262,7 +262,7 @@ function pyramid() {
     console.log(num);
   }
 }
-pyramid();
+// pyramid();
 
 // 7.
 
@@ -299,4 +299,17 @@ function D2() {
   }
   console.log(newArr);
 }
-D2();
+// D2();
+
+// 11.
+function isPalindrom(str) {
+  for (let i = 0; i < str.length; i++) {
+    for (let j = 0; j < 1; j++) {
+      if (str[1] !== str[str.length - 1 - i]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+isPalindrom("natan");
