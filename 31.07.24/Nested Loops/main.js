@@ -14,10 +14,17 @@ function stars() {
 function grid() {
   let str = "";
   for (let i = 0; i < 5; i++) {
-    for (let j = 0; j < 5; j++) {
-      str += j + " ";
-    }
+    for (let j = 0; j < 5; j++) {}
     console.log(str);
+  }
+}
+// grid();
+
+// таблица умножения
+
+function grid() {
+  for (let i = 1; i <= 10; i++) {
+    console.log(i);
   }
 }
 grid();

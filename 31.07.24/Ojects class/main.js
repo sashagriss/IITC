@@ -123,3 +123,11 @@ computer = {
 console.log(`Brand: ${computer.brand}, CPU: ${computer.CPU}`);
 computer.RAMinGB *= 2;
 console.log(computer.RAMinGB);
+
+
+// 11.
+let playlist = {
+  name; "Maneskin",
+  songs: ["choosen",""],
+  duration:,
+}
