@@ -77,10 +77,57 @@ console.log(colors);
 // console.log(arr);
 
 // 25.
-let arr = [1, 2, 3];
-let popArr = arr.pop();
-for (let i = 3; i > 0; i--) {
-  console.log(arr[i]);
-}
+// let arr = [1, 2, 3];
+// let popArr = arr.pop();
+// for (let i = 3; i > 0; i--) {
+//   console.log(arr[i]);
+// }
 
 // console.log(popArr);
+
+// 26.
+fruit.unshift("mango");
+console.log(fruit);
+// 27.
+num.shift();
+let removedNum = num.shift();
+console.log(num);
+console.log(removedNum);
+
+// 28.
+num.unshift(0, 1, 2);
+console.log(num);
+
+// 29.
+let emptyArr = [];
+for (let i = 5; i > 0; i--) {
+  emptyArr.unshift(i);
+}
+console.log(emptyArr);
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!?
+// 30.
+for (let i = 0; i < emptyArr.length; i++) {
+  let shiftArr = emptyArr.shift();
+  console.log(shiftArr);
+}
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// 31.
+let index = colors.indexOf("white");
+console.log(index);
+
+// 32.
+console.log(seasons.indexOf("winter"));
+
+// 33.
+colors.push("red");
+let lastIndexOf = colors.lastIndexOf("red");
+console.log(lastIndexOf);
+// 34.
+let numeros = [1, 1, 2, 3, 3];
+let indexOfNumero = numeros.indexOf(1);
+console.log(indexOfNumero);
+
+let lastIndexOfNumero = numeros.lastIndexOf(3);
+console.log(lastIndexOfNumero);
