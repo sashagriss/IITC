@@ -67,7 +67,7 @@ let car = {
   model: "6",
   year: 2008,
   print: function () {
-    console.log(this);
+    // console.log(this);
   },
 };
 
@@ -76,7 +76,7 @@ car.color = "grey";
 
 car.print();
 let keys = Object.keys(car);
-console.log(keys);
+// console.log(keys);
 
 function myCar() {
   for (let i = 0; i < keys.length; i++) {
@@ -84,7 +84,7 @@ function myCar() {
   }
 }
 
-myCar();
+// myCar();
 
 // 6.
 let smartphone = {
@@ -92,10 +92,10 @@ let smartphone = {
   model: "iPhone 12",
   storageGB: 128,
 };
-console.log(smartphone.storageGB);
+// console.log(smartphone.storageGB);
 
 smartphone.model = "iPhone 15";
-console.log(smartphone.model);
+// console.log(smartphone.model);
 
 // 7.
 let recipe = {
@@ -110,7 +110,7 @@ console.log(recipe.ingredients[0]);
 // newInredient.push("milk");
 
 recipe.ingredients.push("milk");
-console.log(recipe.ingredients);
+// console.log(recipe.ingredients);
 
 // 10.
 
@@ -122,12 +122,105 @@ computer = {
 
 console.log(`Brand: ${computer.brand}, CPU: ${computer.CPU}`);
 computer.RAMinGB *= 2;
-console.log(computer.RAMinGB);
-
+// console.log(computer.RAMinGB);
 
 // 11.
 let playlist = {
-  name; "Maneskin",
-  songs: ["choosen",""],
-  duration:,
-}
+  name: "Maneskin",
+  songs: ["chosen", "Beggin", "Are you ready?"],
+  duration: 10,
+};
+playlist.songs.push("Slave");
+playlist.duration += 3;
+
+let averageDuration = playlist.duration / playlist.songs.length;
+// console.log(averageDuration);
+
+// 12.
+let bankAccount = {
+  accountNumber: "Sasha123",
+  balance: 15000,
+  isActive: true,
+  deposit: function (amount) {
+    this.balance += amount;
+    console.log(`New balance is ${this.balance}`);
+  },
+  withdraw: function (amount) {
+    if (this.balance > amount) {
+      this.balance -= amount;
+      console.log(`New balance is ${this.balance}`);
+    } else {
+      console.log(`Account balance is not suficient`);
+    }
+  },
+};
+// bankAccount.deposit(1000);
+
+// bankAccount.withdraw(300);
+
+// 13.
+let circle = {
+  radius: 7,
+  color: "pink",
+  calculateArea: function () {
+    this.area = Math.PI * this.radius ** 2;
+    console.log(this.area);
+  },
+  calculateCircumference: function () {
+    this.circumference = 2 * Math.PI * this.radius;
+    console.log(this.circumference);
+  },
+};
+// circle.calculateArea();
+// circle.calculateCircumference();
+
+// 14.
+let student = {
+  name: "Sasha",
+  grades: [65, 70, 99],
+  calculateAverage: function () {
+    let sum = this.grades.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+    let average = sum / this.grades.length;
+
+    console.log(average);
+  },
+  getLetterGrade: function () {
+    let average = this.calculateAverage();
+    if (average >= 90) {
+      return "A";
+    } else if (average >= 80) {
+      return "B";
+    } else if (average >= 70) {
+      return "C";
+    } else if (average >= 60) {
+      return "D";
+    } else {
+      return "F";
+    }
+  },
+};
+
+let letterGrade = student.getLetterGrade();
+console.log(letterGrade);
+
+student.calculateAverage();
+student.getLetterGrade();
+
+// 15.
+let todoList = {
+  tasks: ["HM", "dishes", "clean a car"],
+  completedTasks: ["laundry", "cook", "clean the house"],
+  addTask: function (task) {
+    this.tasks.push(task);
+    console.log(this.tasks);
+  },
+  completeTask: function (task) {
+    this.completedTasks = this.tasks.filter([0]);
+  },
+};
+todoList.addTask("take kids from school");
+todoList.completeTask();????//////?????????????
+// ??????????????????????????????????
