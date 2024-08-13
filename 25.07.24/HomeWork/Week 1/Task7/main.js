@@ -44,6 +44,26 @@ if (hour < 12) {
 }
 console.log(period);
 
+// 9.
+const name = "f";
+let hasName;
+if (name === "") {
+  hasName = false;
+} else {
+  hasName = true;
+  console.log(`Your name is ${name}`);
+}
+console.log(hasName);
+
+// 10.
+const amount = 130;
+let shipping;
+if (amount > 1000) {
+  shipping = 0;
+} else {
+  shipping = 2;
+}
+console.log(shipping);
 // 11.
 let password = "1234";
 let isLoggedIn;
@@ -110,3 +130,18 @@ let positiveNumber;
 let nowNumber = 7;
 let parity = nowNumber % 2 === 0 ? "even" : "odd";
 console.log(parity);
+
+
+// 27.
+const temperature = 78
+const pressure = 2.5
+let water;
+if (temperature < 24) {
+  if (
+
+  ) {
+    
+  }
+  
+}
+

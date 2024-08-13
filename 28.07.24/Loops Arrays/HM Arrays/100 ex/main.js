@@ -107,10 +107,11 @@ console.log(emptyArr);
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!?
 // 30.
-for (let i = 0; i < emptyArr.length; i++) {
+for (let i = 0; i < emptyArr.length; ) {
   let shiftArr = emptyArr.shift();
-  console.log(shiftArr);
 }
+console.log(emptyArr);
+console.log(shiftArr);
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // 31.

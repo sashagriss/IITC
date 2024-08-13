@@ -337,4 +337,4 @@ function getStudentNames(array) {
   }
   return newArray;
 }
-console.log(getStudentNames(students2));
+console.log(getStudentNames("math"));

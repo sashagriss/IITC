@@ -1,6 +1,11 @@
 function greet() {
   console.log("Hello World");
 }
+// 2.
+function square(num) {
+  return num ** 2;
+}
+console.log(square(10));
 
 // 6.
 let x = 3;
