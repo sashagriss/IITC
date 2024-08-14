@@ -107,12 +107,10 @@ console.log(emptyArr);
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!?
 // 30.
-for (let i = 0; i < emptyArr.length; ) {
-  let shiftArr = emptyArr.shift();
+while (emptyArr.length > 0) {
+  console.log(emptyArr.shift());
+  console.log(emptyArr);
 }
-console.log(emptyArr);
-console.log(shiftArr);
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // 31.
 let index = colors.indexOf("white");
@@ -132,3 +130,5 @@ console.log(indexOfNumero);
 
 let lastIndexOfNumero = numeros.lastIndexOf(3);
 console.log(lastIndexOfNumero);
+
+// 35.

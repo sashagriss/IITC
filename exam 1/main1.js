@@ -17,7 +17,7 @@ function countProductsInCategory(array, category) {
   }
   return count;
 }
-console.log(countProductsInCategory(myProducts, "electronics"));
+// console.log(countProductsInCategory(myProducts, "electronics"));
 
 // 7.
 
@@ -32,7 +32,7 @@ function getProductsByCategory(array, category) {
   return newArr;
 }
 
-console.log(getProductsByCategory(myProducts, "electronics"));
+// console.log(getProductsByCategory(myProducts, "electronics"));
 
 // // 10.
 // function countProductOccurrences(array, char) {
@@ -104,12 +104,6 @@ function groupStringsByLength(array) {
 ("use strict");
 
 // Example Data
-const employee = {
-  name: "Alice",
-  position: "Developer",
-  salary: 5000,
-  skills: ["JavaScript", "React"],
-};
 
 const orders = [
   { orderId: 1, product: "Laptop", quantity: 2, price: 1500 },
@@ -126,111 +120,190 @@ const books = [
 
 const words = ["hello", "world", "javascript", "developer", "programming"];
 
+const employee = {
+  name: "Alice",
+  position: "Developer",
+  salary: 5000,
+  skills: ["JavaScript", "React"],
+};
 // 😅 Task 1: Update Employee Position 😅
 // TODO: Write a function to update the employee's position (You can mutate the original object)
-function updatePosition(employee, newPosition) {}
+function updatePosition(obj, newPosition) {
+  obj.position = newPosition;
+}
 
-updatePosition(employee, "Senior Developer");
+// updatePosition(employee, "Senior Developer");
 // console.log("Updated Employee:", employee);
 
 // 😅 Task 2: Add Skill to Employee 😅
 // TODO: Write a function to add a new skill to the employee's skills (You can mutate the original object)
-function addSkill(employee, skill) {
-  // your code here
+function addSkill(obj, skill) {
+  obj.skills.push(skill);
 }
 
-addSkill(employee, "Node.js");
+// addSkill(employee, "Node.js");
 // console.log("Updated Employee:", employee);
 
 // 😅 Task 3: Calculate Total Order Value 😅
 // TODO: Write a function to calculate the total value of all orders
-function calculateTotalOrderValue(orders) {
-  // your code here
+function calculateTotalOrderValue(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i].price;
+  }
+  return sum;
 }
 
-const totalOrderValue = calculateTotalOrderValue(orders);
+// const totalOrderValue = calculateTotalOrderValue(orders);
 // console.log("Total Order Value:", totalOrderValue);
 
 // 🙂 Task 4: Find Book by Title 🙂
 // TODO: Write a function to find a book by title
-function findBookByTitle(books, title) {
-  // your code here
+function findBookByTitle(array, title) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].title === title) {
+      return array[i];
+    }
+  }
 }
 
-const foundBook = findBookByTitle(books, "1984");
+// const foundBook = findBookByTitle(books, "1984");
 // console.log("Found Book:", foundBook);
 
 // 🙂 Task 5: Count Books by Author 🙂
 // TODO: Write a function to count the number of books by a given author
-function countBooksByAuthor(books, author) {
-  // your code here
+function countBooksByAuthor(array, author) {
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].author === author) {
+      count++;
+    }
+  }
+  return count;
 }
 
-const bookCount = countBooksByAuthor(books, "George Orwell");
+// const bookCount = countBooksByAuthor(books, "George Orwell");
 // console.log("Books by George Orwell:", bookCount);
 
 // 🙂 Task 6: Get Book Titles 🙂
 // TODO: Write a function to get an array of all book titles
-function getBookTitles(books) {
-  // your code here
+function getBookTitles(array) {
+  arr = [];
+  for (let i = 0; i < array.length; i++) {
+    arr.push(array[i].title);
+  }
+  return arr;
 }
 
-const titles = getBookTitles(books);
+// const titles = getBookTitles(books);
 // console.log("Book Titles:", titles);
 
 // 🤨 Task 7: Get Orders by Product 🤨
 // TODO: Write a function to get orders by product name
-function getOrdersByProduct(orders, product) {
-  // your code here
+function getOrdersByProduct(array, product) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].product === product) {
+      return array[i];
+    }
+  }
 }
 
-const laptopOrders = getOrdersByProduct(orders, "Laptop");
+// const laptopOrders = getOrdersByProduct(orders, "Laptop");
 // console.log("Laptop Orders:", laptopOrders);
 
 // 🤨 Task 8: Calculate Average Book Year 🤨
 // TODO: Write a function to calculate the average publication year of all books
-function calculateAverageBookYear(books) {
-  // your code here
+function calculateAverageBookYear(array) {
+  let sum = 0;
+  let avg;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i].year;
+  }
+  avg = Math.round(sum / array.length);
+  return avg;
 }
 
-const averageYear = calculateAverageBookYear(books);
+// const averageYear = calculateAverageBookYear(books);
 // console.log("Average Book Year:", averageYear);
 
 // 🤨 Task 9: Add New Order 🤨
 // TODO: Write a function to add a new order (You can mutate the original array)
-function addOrder(orders, newOrder) {
-  // your code here
+function addOrder(array, newOrder) {
+  array.push(newOrder);
 }
 
-addOrder(orders, { orderId: 4, product: "Monitor", quantity: 1, price: 300 });
+// addOrder(orders, { orderId: 4, product: "Monitor", quantity: 1, price: 300 });
 // console.log("Updated Orders:", orders);
 
 // 😥 Task 10: Count Vowel Occurrences 😥
 // TODO: Write a function to count the occurrences of vowels in an array of strings
-function countVowelOccurrences(words) {
-  // your code here
+function countVowelOccurrences(array, vowels) {
+  // let count = 0, word_count = 0;
+  // for (let i = 0; i < array.length; i++) {
+  //   word_count = 0;
+  //   for (let j = 0; j < array[i].length; j++) {
+  //     if (vowels.includes(array[i][j])) {
+  //       count++;
+  //       word_count++;
+  //     }
+  //   }
+  //   console.log(word_count);
+  // }
+
+  let arr = {};
+  let count;
+  for (let i = 0; i < array.length; i++) {
+    count = 0;
+    for (let j = 0; j < array[i].length; j++) {
+      if (vowels.includes(array[i][j])) {
+        count++;
+      }
+    }
+    arr[array[i]] = count;
+  }
+
+  return arr;
 }
 
-const vowelCount = countVowelOccurrences(words);
+// const vowelCount = countVowelOccurrences(words, "aeiou");
 // console.log("Vowel Occurrences:", vowelCount);
 
 // 😥 Task 11: Update Book Year by Title 😥
 // TODO: Write a function to update the year of a book by its title (You can mutate the original object)
-function updateBookYearByTitle(books, title, newYear) {
-  // your code here
+function updateBookYearByTitle(array, title, newYear) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].title === title) {
+      array[i].year = newYear;
+    }
+  }
 }
 
-updateBookYearByTitle(books, "1984", 1950);
+// updateBookYearByTitle(books, "1984", 1950);
 // console.log("Updated Books:", books);
 
 // 😥 Task 12: Get Capitalized Words 😥
 // TODO: Write a function to get an array of words with each word capitalized (You should return a new array)
-function getCapitalizedWords(words) {
-  // your code here
+// function getCapitalizedWords(array) {
+//   let arr = [];
+//   for (let i = 0; i < array.length; i++) {
+//     arr.push(array[i].toUpperCase());
+//   }
+//   return arr;
+// }
+function getCapitalizedWords(array) {
+  let arr = [];
+  let newArr;
+  for (let i = 0; i < array.length; i++) {
+    for (let J = 0; J < array[i].length; J++) {
+      array[i][0].toUpperCase();
+      arr.push(array[i]);
+    }
+  }
+  return arr;
 }
 
 const capitalizedWords = getCapitalizedWords(words);
-// console.log("Capitalized Words:", capitalizedWords);
+console.log("Capitalized Words:", capitalizedWords);
 
 // 🥵 Task 13: Group Orders by Product 🥵
 // TODO: Write a function to group orders by product name.
