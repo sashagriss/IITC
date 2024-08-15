@@ -67,7 +67,7 @@ where EmployeeID in (7,5,4)
 
 -- 11.
 SELECT ProductName,
-ProductID,
+ProductID, CategoryID,
 UnitPrice
 from Products
  where CategoryID not in (1 , 2 , 7)

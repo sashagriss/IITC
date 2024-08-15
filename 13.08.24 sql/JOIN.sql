@@ -28,42 +28,98 @@ where c.CompanyName like 'a%'
 SELECT r.RegionDescription ,
 t.TerritoryDescription
 from Region r join Territories t
-on t 
-where 
+on R.RegionID = T.RegionID
+
 
 -- 5. 
-SELECT
-from 
-on 
-where 
+SELECT p.ProductName,
+p.UnitPrice
+from Products P join Categories C
+on P.CategoryID = C.CategoryID
+where p.UnitPrice >50
 
 -- 6.
-SELECT
-from 
-on 
-where 
+SELECT p.ProductID,
+p.UnitPrice,
+p.SupplierID
+from Products P join Categories C
+on P.CategoryID = C.CategoryID
+where p.SupplierID = 3
+
 
 -- 7.
-SELECT
-from 
-on 
-where 
+SELECT p.ProductID,
+p.UnitPrice,
+p.SupplierID
+from Products P join Categories C
+on P.CategoryID = C.CategoryID
+where c.CategoryName like '%a%'
+
+-- 8.
+SELECT s.CompanyName,
+p.ProductName,
+p.UnitPrice,
+c.CategoryName
+from Products P join Categories C
+on  P.CategoryID = C.CategoryID
+join Suppliers s
+on p.SupplierID = s.SupplierID
 
 
-SELECT
-from 
-on 
-where 
+-- 9. 
+SELECT p.ProductName,
+c.[Description],
+s.City
+from Products p JOIN Categories c 
+on p.CategoryID = c.CategoryID
+JOIN Suppliers s
+on p.SupplierID = s.SupplierID
+where s.City in ('Tokyo','London')
+
+
+-- 10. 
+SELECT p.ProductID,
+c.Description,
+s.Country
+from Products p JOIN Categories c 
+on p.CategoryID = c.CategoryID
+JOIN Suppliers s
+on p.SupplierID = s.SupplierID
+where s.Country like 'a%'
+
+-- 11.
+SELECT CompanyName,
+OrderID
+from Customers left JOIN Orders
+on Customers.CustomerID = Orders.CustomerID 
 
 
 
-SELECT
-from 
-on 
-where 
+SELECT OrderID,
+OrderDate,
+ShipAddress,
+c.CustomerID,
+CompanyName,
+Phone
+from Orders o join Customers c
+on o.CustomerID = c.CustomerID
+where Year (o.OrderDate ) = '1996'
+and (c.CustomerID like 'a%' or c.CustomerID like 'c%')
 
 
-SELECT
-from 
-on 
-where 
+-- 13.
+SELECT OrderID,
+OrderDate,
+ShipAddress,
+c.CustomerID,
+CompanyName,
+Phone,
+FirstName,
+LastName
+from Orders o join Customers c
+on o.CustomerID = c.CustomerID
+join Employees E
+on e.EmployeeID = o.EmployeeID
+where Year (o.OrderDate ) = '1996'
+and (c.CustomerID like 'a%' or c.CustomerID like 'c%')
+order by OrderDate DESC
