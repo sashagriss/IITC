@@ -205,6 +205,10 @@ VALUES
 
 
 
+UPDATE Accounting
+set Amount = 200
+where ReceiptID =2
+
 select * from Accounting
 -- /////////////////////////////////////////////////////////////////////////////////
 

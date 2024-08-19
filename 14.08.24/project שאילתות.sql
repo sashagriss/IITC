@@ -43,16 +43,16 @@ SELECT * from Customers
 -- /////////////////////////////////////////////////////////////////
 
 -- 6.4
-select r.PaidAmt, 
+select r.PaidAmt,
  r.OrderNo,
  r.ReceiptID,
  Date,
- case when a.CrdtDebt = 1 then 'credid' else 'debit'  end as 'creditdebit',
+ case when PaidAmt< a.amount then 'credid' else 'debit'  end as 'creditdebit',
  sum(a.Amount-r.PaidAmt) as amount
 from Accounting a join Receipt r
 on a.ReceiptID = r.ReceiptID
 where date = '2024-08-06'
-group by r.PaidAmt,r.OrderNo,r.ReceiptID,a.Date,a.CrdtDebt
+group by r.PaidAmt,r.OrderNo,r.ReceiptID,a.Date,a.CrdtDebt, amount
 
 -- //////////////////////////////////////////////////////////////
 -- 6.5
