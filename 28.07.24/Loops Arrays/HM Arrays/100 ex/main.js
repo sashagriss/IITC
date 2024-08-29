@@ -132,3 +132,99 @@ let lastIndexOfNumero = numeros.lastIndexOf(3);
 console.log(lastIndexOfNumero);
 
 // 35.
+if (numeros.indexOf(2) !== -1) {
+  console.log("true");
+} else {
+  console.log("false");
+}
+
+// 36.
+console.log(fruits.includes("apple"));
+
+// 38.
+console.log(colors.includes("blue", colors / 2));
+// 39.
+function checkSpecValue(value) {
+  return numeros.includes(value) !== -1;
+}
+console.log(checkSpecValue(1));
+
+// 41.
+console.log(numeros.slice(3));
+
+// 42.
+console.log(colors.slice(5));
+
+// 43.
+console.log(seasons.slice(1, 3));
+// 44.
+console.log(colors.slice());
+// 45.
+if (numeros % 2 === 0) {
+  let startNumeros = Math.floor(numeros.length / 2) - 1;
+  let endfNumeros = Math.ceil(numeros.length / 2) + 1;
+  console.log(numeros.slice(halfNumeros, endfNumeros));
+} else {
+  let halfNumeros = Math.floor(numeros.length / 2);
+  console.log(numeros.slice(halfNumeros, halfNumeros + 1));
+}
+// 46.
+console.log(colors);
+console.log(colors.splice(colors.length / 2, 1));
+// 47.
+console.log(numeros);
+numeros.splice(3, 1, 5);
+console.log(numeros);
+
+// 48.
+console.log(colors);
+colors.splice(1, 0, "green");
+console.log(colors);
+// 49.
+colors.splice(0, 1, "blue", "orange");
+console.log(colors);
+// 50.
+// colors.splice(0, colors.length);
+// console.log(colors);
+
+// 51.
+let newArr = colors.concat(fruit);
+console.log(newArr);
+// 52.
+let newArray = colors.concat(fruit.concat(numeros));
+console.log(newArray);
+//  53.
+let newArr1 = colors.concat(fruit, "blueberry");
+console.log(newArr1);
+// 54.
+let newArr2 = colors.concat(colors);
+console.log(newArr2);
+// 55.
+let newArr3 = colors.concat(fruit, 1, 2, 3);
+console.log(newArr3);
+// 56.
+let newFruit = fruit.join(",");
+console.log(newFruit);
+// 57.
+// newNum = numeros.join("-");
+// console.log(newNum);
+// 58.
+function join(array, seperator) {
+  return array.join(seperator);
+}
+// console.log(join(numeros, "/"));
+// 59.
+// console.log(numeros.join(""));
+// 60.
+// let str = "I am a mother";
+function reverse(str) {
+  let split = str.split(" ");
+  let reverse = split.reverse();
+  let join1 = reverse.join(" ");
+  return join1;
+}
+// console.log(reverse("I am a mother"));
+// 61.
+console.log(seasons);
+console.log(seasons.reverse());
+// 62.

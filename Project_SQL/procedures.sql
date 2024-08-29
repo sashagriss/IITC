@@ -2,7 +2,6 @@ CREATE PROCEDURE getAllItems
 as 
 SELECT *
 from Items
-
 SELECT *
 from Invoices
 GO
