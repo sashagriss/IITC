@@ -22,7 +22,7 @@ const dbConfig = {
     connectTimeout: 30000, // Increase connection timeout to 30 seconds
   },
 };
-// sasha
+
 // Route to get data
 // app.get("/getAllItems", async (req, res) => {
 //   try {
