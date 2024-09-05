@@ -1,6 +1,6 @@
-// https://docs.google.com/document/d/1yB6ErFdyjXWh7INfikVXyVpZ5sTM-htDnYth5FXK0sM/edit?usp=sharing
+//docs.google.com/document/d/1yB6ErFdyjXWh7INfikVXyVpZ5sTM-htDnYth5FXK0sM/edit?usp=sharing
 
-"use strict";
+https: "use strict";
 
 // count the char in a string
 function countChar(string, char) {
@@ -224,7 +224,6 @@ let arr = [
 ];
 searchInArray(arr, 6);
 
-
 // 8.
 // Objective: Write a program to find the frequency of each character in a string.
 // Instructions:
@@ -233,22 +232,3 @@ searchInArray(arr, 6);
 // Print each character and its frequency.
 // Example Output:
 // For input = "hello", output: h: 1, e: 1, l: 2, o: 1
-
-
-function countFreq(str) {
-  let freqObject = {}
-  for (let i = 0; i < str.length; i++) {
-    console.log([i]);
-    for (let j = 0; j < str.length; j++) {
-      if (str[i]===str[j]) {
-        if (freqObject.)
-        
-      }
-      
-      
-    }
-  }
-
-  
-}
-countFreq("hello")

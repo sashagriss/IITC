@@ -237,6 +237,26 @@ function groupStringsBySpaces(strings) {
 // const groupedStrings_1 = groupStringsBySpaces(strings);
 // console.log("Grouped Strings By Spaces:", groupedStrings_1);
 
+
+// 13.
+function countSpaces (arr){
+  const obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    let count = 0;
+    for (let j = 0; j < arr[i].length; j++) {
+     if (arr[i][j] === " ") {
+      count++;
+     }
+      
+    }
+    
+  }
+return obj;
+}
+countSpaces(strings)
+
+
+
 // 🥵 Task 14: group strings by length 🥵
 //TODO: Write a function to group strings by length.
 // The function should return an object where keys are the length of the strings and values are arrays of strings.

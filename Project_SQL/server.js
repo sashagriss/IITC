@@ -1,9 +1,9 @@
 const express = require("express");
 const sql = require("mssql");
 require("dotenv").config();
-
 const app = express();
 const port = 3000;
+app.use(express.json());
 
 // Database configuration
 const dbConfig = {
@@ -24,112 +24,176 @@ const dbConfig = {
 };
 
 // Route to get data
-app.get("/getAllItems", async (req, res) => {
+// app.get("/getAllItems", async (req, res) => {
+//   try {
+
+//     //     sql
+//       .connect(dbConfig)
+//       .then(() => {
+//         console.log("Connected successfully!");
+//       })
+//       .catch((err) => {
+//         console.error("Connection failed:", err);
+//       });
+
+//     // Query the database
+//     const result = await sql.query("exec getAllItems");
+
+//     // Send the results as JSON
+//     res.json(result.recordset);
+//   } catch (err) {
+//     console.error("SQL error", err);
+//     res.status(500).send("Server Error");
+//   }
+// });
+// // //////////////////////////////////////////////////
+// app.get("/checkOrder", async (req, res) => {
+//   try {
+//     sql
+//       .connect(dbConfig)
+//       .then(() => {
+//         console.log("Connected successfully!");
+//       })
+//       .catch((err) => {
+//         console.error("Connection failed:", err);
+//       });
+
+//     // Query the database
+//     const result = await sql.query("exec checkOrder");
+
+//     // Send the results as JSON
+//     res.json(result.recordset);
+//   } catch (err) {
+//     console.error("SQL error", err);
+//     res.status(500).send("Server Error");
+//   }
+// });
+// // ////////////////////////////////////////////////////////
+
+// app.get("/checkSubClients", async (req, res) => {
+//   try {
+//     sql
+//       .connect(dbConfig)
+//       .then(() => {
+//         console.log("Connected successfully!");
+//       })
+//       .catch((err) => {
+//         console.error("Connection failed:", err);
+//       });
+
+//     // Query the database
+//     const result = await sql.query("exec checkSubClients");
+
+//     // Send the results as JSON
+//     res.json(result.recordset);
+//   } catch (err) {
+//     console.error("SQL error", err);
+//     res.status(500).send("Server Error");
+//   }
+// });
+// // ////////////////////////////////////////////////////////////////
+// app.get("/checkCrdtDebt", async (req, res) => {
+//   try {
+//     sql
+//       .connect(dbConfig)
+//       .then(() => {
+//         console.log("Connected successfully!");
+//       })
+//       .catch((err) => {
+//         console.error("Connection failed:", err);
+//       });
+
+//     // Query the database
+//     const result = await sql.query("exec checkCrdtDebt");
+
+//     // Send the results as JSON
+//     res.json(result.recordset);
+//   } catch (err) {
+//     console.error("SQL error", err);
+//     res.status(500).send("Server Error");
+//   }
+// });
+// // ///////////////////////////////////////////////////////////////////
+
+// app.get("/getPendingOrders", async (req, res) => {
+//   try {
+// //     sql
+//       .connect(dbConfig)
+//       .then(() => {
+//         console.log("Connected successfully!");
+//       })
+//       .catch((err) => {
+//         console.error("Connection failed:", err);
+//       });
+
+//     // Query the database
+//     const result = await sql.query("exec getPendingOrders");
+
+//     // Send the results as JSON
+//     res.json(result.recordset);
+//   } catch (err) {
+//     console.error("SQL error", err);
+//     res.status(500).send("Server Error");
+//   }
+// });
+
+// app.get("/data", async (req, res) => {
+//   try {
+//     sql
+//       .connect(dbConfig)
+//       .then(() => {
+//         console.log("Connected successfully!");
+//       })
+//       .catch((err) => {
+//         console.error("Connection failed:", err);
+//       });
+
+//     // Query the database
+//     const result = await sql.query("exec checkSubClients");
+
+// Send the results as JSON
+//     res.json(result.recordset);
+//   } catch (err) {
+//     console.error("SQL error", err);
+//     res.status(500).send("Server Error");
+//   }
+// });
+
+// TEST ISRAEL
+app.get("/babushka", async (req, res) => {
   try {
-    sql
-      .connect(dbConfig)
-      .then(() => {
-        console.log("Connected successfully!");
-      })
-      .catch((err) => {
-        console.error("Connection failed:", err);
-      });
-
-    // Query the database
-    const result = await sql.query("exec getAllItems");
-
-    // Send the results as JSON
-    res.json(result.recordset);
+    res.json({ msg: "hello" });
   } catch (err) {
     console.error("SQL error", err);
     res.status(500).send("Server Error");
   }
 });
-// //////////////////////////////////////////////////
-app.get("/checkOrder", async (req, res) => {
+
+app.get("/data", async (req, res) => {
   try {
-    sql
-      .connect(dbConfig)
-      .then(() => {
-        console.log("Connected successfully!");
-      })
-      .catch((err) => {
-        console.error("Connection failed:", err);
-      });
-
-    // Query the database
-    const result = await sql.query("exec checkOrder");
-
-    // Send the results as JSON
-    res.json(result.recordset);
+    res.json({ msg: "hello World" });
   } catch (err) {
     console.error("SQL error", err);
     res.status(500).send("Server Error");
   }
 });
-// ////////////////////////////////////////////////////////
 
-app.get("/checkSubClients", async (req, res) => {
+app.add = function () {
+  return "success";
+};
+
+app.sum = (a, b) => {
+  return a + b;
+};
+
+app.makeString = (num) => {
+  return num.toString();
+};
+
+app.post("/baba", (req, res) => {
+  const id = req.body.id;
   try {
-    sql
-      .connect(dbConfig)
-      .then(() => {
-        console.log("Connected successfully!");
-      })
-      .catch((err) => {
-        console.error("Connection failed:", err);
-      });
-
-    // Query the database
-    const result = await sql.query("exec checkSubClients");
-
-    // Send the results as JSON
-    res.json(result.recordset);
-  } catch (err) {
-    console.error("SQL error", err);
-    res.status(500).send("Server Error");
-  }
-});
-// ////////////////////////////////////////////////////////////////
-app.get("/checkCrdtDebt", async (req, res) => {
-  try {
-    sql
-      .connect(dbConfig)
-      .then(() => {
-        console.log("Connected successfully!");
-      })
-      .catch((err) => {
-        console.error("Connection failed:", err);
-      });
-
-    // Query the database
-    const result = await sql.query("exec checkCrdtDebt");
-
-    // Send the results as JSON
-    res.json(result.recordset);
-  } catch (err) {
-    console.error("SQL error", err);
-    res.status(500).send("Server Error");
-  }
-});
-// ///////////////////////////////////////////////////////////////////
-
-app.get("/getPendingOrders", async (req, res) => {
-  try {
-    sql
-      .connect(dbConfig)
-      .then(() => {
-        console.log("Connected successfully!");
-      })
-      .catch((err) => {
-        console.error("Connection failed:", err);
-      });
-
-    // Query the database
-    const result = await sql.query("exec getPendingOrders");
-
-    // Send the results as JSON
-    res.json(result.recordset);
+    res.json({ id: id });
   } catch (err) {
     console.error("SQL error", err);
     res.status(500).send("Server Error");
@@ -140,25 +204,4 @@ app.get("/getPendingOrders", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
-app.get("/data", async (req, res) => {
-  try {
-    sql
-      .connect(dbConfig)
-      .then(() => {
-        console.log("Connected successfully!");
-      })
-      .catch((err) => {
-        console.error("Connection failed:", err);
-      });
-
-    // Query the database
-    const result = await sql.query("exec checkSubClients");
-
-    // Send the results as JSON
-    res.json(result.recordset);
-  } catch (err) {
-    console.error("SQL error", err);
-    res.status(500).send("Server Error");
-  }
-});
+module.exports = app;

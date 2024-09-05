@@ -4,14 +4,20 @@
     "description": "A simple Node.js server that connects to SQL Server and executes a query.",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js"
+        "start": "node server.js",
+        "test": "jest --coverage"
     },
     "dependencies": {
+        "axios": "^1.7.7",
         "dotenv": "^16.3.1",
         "express": "^4.19.2",
         "mssql": "^9.1.1"
     },
     "author": "Israel",
     "license": "ISC",
-    "keywords": []
+    "keywords": [],
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "supertest": "^7.0.0"
+    }
 }
