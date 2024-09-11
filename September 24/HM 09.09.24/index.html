@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+         /* text-indent: 3px; */
+        padding: 10px;
+        border: 3px solid black;
+        /* padding: 8px; */
+       background-color: rgb(209, 173, 65);
+      margin-bottom: 10px;
+      color: rgb(97, 45, 210);
+    }
+
+    .span {
+        color: black;
+    }
+    .boxed {
+        padding: 10px;   
+        color: rgb(39, 154, 154);
+        background-color: beige;
+        /* border: 2px solid beige; */
+        border-radius: 10px;
+    }
+.circle {
+width: 80px;
+height: 80px;
+background-color: aquamarine;
+border-radius: 50%;
+display: inline-block;
+margin-right: 4px;
+}
+.color1 {
+    background-color: brown;
+}
+.color2 {
+    background-color: darkorange;
+}
+.box {
+    background-color: rgb(33, 113, 193);
+    width: 75% ;
+    height: 200px;
+    margin-bottom: 6px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mini-box {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(189, 16, 100);
+    
+}
+.mini-box2 {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(189, 16, 100);
+    margin-left: auto;
+    
+}
+.mini-box3 {
+    width: 80px;
+    height: 30px;
+    background-color: rgb(189, 16, 100);
+    margin-inline: auto ;
+    border-radius: 50%;
+    box-shadow: 8px 8px 8px white
+    
+}
+.mini-box p {
+    color: white;
+    text-align:center;
+}
+.mini-box2 .p2 {
+    color: white;
+    text-align:center;
+    
+}
+.mini-box3 .p3 {
+    color: white;
+    text-align:center;
+    
+}
+.button{
+    background-color: blueviolet;
+    color: aliceblue;
+    border: blueviolet;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+   padding-inline: 18px;
+   padding-block: 6px;
+   
+}
+.button.egg {
+border-radius: 50%;
+}
+
+</style>
+<body>
+    <div class="container">
+        <p>
+           1st paragraph is speaking about normal things. 
+        </p>
+        <p>
+            2nd paragraph is speaking about <span class="span">BLACK</span> color.
+        </p>
+        <p >
+            <span class ="boxed"> 3rd paragraph is speaking about unique things. </span>
+        </p>
+    </div>
+    <div class="container">
+       <span class="circle ">
+       </span>
+       <span class="circle color1">
+       </span>
+       <span class="circle color2">
+       </span>
+    </div>
+
+   <div class="container">
+
+<div class="box">
+<div class="mini-box">
+<p>left</p>
+</div>
+<div class="mini-box2">
+    <p class="p2">right</p>
+</div>
+<div class="mini-box3">
+    <p class="p3">middle</p>
+</div>
+</div>
+</div>
+<div>
+    <button class="button">EXPLORE</button>
+    <button class="button egg">JOIN</button>
+</div>
+
+
+</body>
+</html>
