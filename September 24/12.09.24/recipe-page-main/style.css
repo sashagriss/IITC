@@ -1,0 +1,146 @@
+@font-face {
+    font-family:outfit ;
+    src: url('./assets/fonts/outfit/Outfit-VariableFont_wght.ttf');
+}
+@font-face {
+    font-family:young ;
+    src: url('./assets/fonts/young-serif/YoungSerif-Regular.ttf');
+}
+:root{
+    --color-bg:hsl(0, 0%, 100%);
+
+    --color-stone-100: hsl(30, 54%, 90%);
+    --color-stone-150: hsl(30, 18%, 87%);
+    --color-stone-600: hsl(30, 10%, 34%);
+    --color-stone-900: hsl(24, 5%, 18%);
+
+    --color-brown-800: hsl(14, 45%, 36%);
+
+    --color-card-800: hsl(332, 51%, 32%);
+    --color-card-50: hsl(330, 100%, 98%);
+}
+
+*{
+    box-sizing: border-box;
+    /* padding: 0; */
+    margin: 0;
+}
+html,body{
+    min-height: 100%;
+}
+img{
+    display: block;
+    max-width: 100%;
+    margin-bottom: 2.5rem;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+article{
+    max-width: 768px;
+}
+main{
+    
+    padding-inline: 2rem;
+    font-family: 'outfit';
+    color: var(--color-stone-600);
+    font-weight: 300;
+    
+}
+h1{
+    font-family: 'young';
+    color: var(--color-stone-900);
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.card{
+    background-color: var(--color-card-50);
+    padding: 1rem;
+    font-weight: 400;
+    border-radius: 12px;
+   
+    
+}
+.card-head{
+    padding-left:1rem;
+    color: var(--color-card-800);
+    font-weight: 600;
+
+}
+.card span{
+    font-weight: 600;
+    line-height: 2rem; 
+}
+
+.header-style{
+    font-family:'young';
+    color: var(--color-brown-800);
+    padding-block: 1rem;
+    margin-block: .5;
+    font-size: 1.7rem;
+    font-weight: 200;
+}
+.lines span{
+    font-weight: 600;
+
+}
+.lines{
+    line-height: 1.8rem;
+    margin-block: 2rem;
+}
+
+.table{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.nutrition-table{
+    display: flex;
+    justify-content: center;
+    padding-inline: 2.7rem;
+    flex-direction: row;
+    line-height: 3rem;
+    justify-content: space-between;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2); 
+    width: 100%
+    
+}
+
+.nutrition-table >  div:last-child {
+color: var(--color-brown-800);
+font-weight: 600;
+}
+
+hr {
+    border: 0; 
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+ ol li::marker {
+    color: var(--color-brown-800);
+    font-weight: 600;
+}
+li{
+    padding-left: 20px;
+}
+@media (min-width: 750px) {
+    article{
+        padding: 2rem;
+        background-color:white;
+        border-radius: 16px;
+    }
+    img{
+        border-radius: 18px;
+    }
+   body{
+    /* padding-inline: 25%;
+    padding-block: 7%; */
+    background-color: var(--color-stone-100);
+   } 
+}
