@@ -1,0 +1,53 @@
+@font-face {
+    font-family:font ;
+    src: url(./assets/fonts/HankenGrotesk-VariableFont_wght.ttf);
+}
+
+:root{
+    --clr-red: hsl(0, 100%, 67%);
+    --clr-yellow: hsl(39, 100%, 56%);
+    --clr-green: hsl(166, 100%, 37%);
+    ---clr-blue: hsl(234, 85%, 45%);
+
+    --bkg-blue-200: hsl(252, 100%, 67%);
+    --bkg-blue-400:hsl(241, 81%, 54%);
+
+    --circle-blue-600:hsla(256, 72%, 46%, 1);
+    --circle-blue-800:hsla(241, 72%, 46%, 0);
+
+    --crl-blue: hsl(221, 100%, 96%);
+    --ctl-lavender: hsl(241, 100%, 89%);
+    --crl-gray-blue: hsl(224, 30%, 27%);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body,html{
+    min-height: 100%;
+    height: 100vh;
+}
+
+body {
+    font-family: 'font';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+article{
+    max-width: 500px;
+    padding-inline: 16px;
+    display: flex;
+    flex-direction: row;
+}
+.card{
+    
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    background-color: var(---clr-blue);
+    text-align: center;
+}
