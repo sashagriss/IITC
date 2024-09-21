@@ -1,0 +1,25 @@
+:root {
+    --random-color: white;
+}
+.selected{
+    font-weight: 700;
+    color: blueviolet;
+}
+.lala{
+    background-color: blue;
+    color:chartreuse;
+}
+.yellow{
+    background-color: chocolate;
+}
+.box{
+    margin: 5px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}
+.box.newClass{
+    width: 200px;
+    height: 200px;
+    background-color: var(--random-color);
+}

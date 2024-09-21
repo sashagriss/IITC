@@ -1,0 +1,9 @@
+
+ul li{
+display: flex;
+gap: 8px;
+}
+.done {
+    text-decoration: line-through;
+    color: grey
+}
