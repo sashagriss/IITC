@@ -8,15 +8,27 @@
 </head>
 <body>
 
-  <form >
-     <h1>To-Do list</h1>
-      <input type="text" id="input" placeholder="task">
-      <button type="button" id="button-add-item">Add task</button> 
-     <ul id="to-do">
-     </ul>
-  </form>
+  <div class="container">
+     <form id="todo-form" >
+        <h1>To-Do list</h1>
+         <input type="text" id="todo-input"
+            placeholder="task"
+            required
+            />
+         <button>Add task</button>
+         <div id="filter-buttons">
+            <button id="fillter-all">All</button>
+            <button id="fillter-active">Active</button>
+            <button id="fillter-completed">Completed</button>
+         </div>
+        <ol id="to-do">
+         Todos will lbe here:
+        </ol>
+     </form>
+  </div>
   
 
    <script src="./main.js"></script>
+   <script src="./script.js"></script>
 </body>
 </html>
