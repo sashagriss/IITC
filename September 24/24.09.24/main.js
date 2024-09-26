@@ -2,6 +2,8 @@ const employees_STORAGE_KEY = "employees";
 let gEmployees = getFromStorage();
 let fakeEmployess = [...gEmployees];
 
+let employeeEdit = null;
+
 function makeId() {
   let id = "";
   const possible =
@@ -26,6 +28,12 @@ const elInputAge = document.getElementById("age");
 const elInputDep = document.getElementById("dep");
 const elInputSalary = document.getElementById("salary");
 
+const InputFirstName = document.getElementById("first");
+const InputLastName = document.getElementById("last");
+const InputAge = document.getElementById("age-sort");
+const InputDep = document.getElementById("department-inSort");
+const InputSalary = document.getElementById("salary-sort");
+
 const elList = document.getElementById("id-ul");
 const elLies = document.querySelectorAll("#id-ul li");
 
@@ -43,11 +51,40 @@ function renderEmployees(fakeEmployess = gEmployees) {
         <td>${employee.department}</td>
         <td>${employee.salary}</td>
         <td>${employee.startDate}</td>
-        <td><button id="edit">Edit</button>
+        <td><button onclick ="showDataInInput('${employee.id}')"id="edit">Edit</button>
          <button onclick="removeEmployee('${employee.id}')" id="delete" >Delete</button></td>
         `;
     elTbEmployee.appendChild(rowEnmployee);
   }
+}
+function showDataInInput(id) {
+  const employeeEditMe = gEmployees.find(
+    (currentEmployee) => id === currentEmployee.id
+  );
+  elInputFirstName.value = employeeEditMe.firstName;
+  elInputLastName.value = employeeEditMe.lastName;
+  elInputAge.value = employeeEditMe.age;
+  elInputSalary.value = employeeEditMe.salary;
+  elInputDep.value = employeeEditMe.department;
+
+  btnAdd.textContent = "complete";
+  employeeEditMe = id;
+}
+
+function handleAddClick() {
+  if (!employeeEdit) {
+    addEmployee();
+  } else {
+    editEmployee(employeeEdit);
+    btnAdd.textContent = "Add";
+    employeeEdit = null;
+  }
+  elInputFirstName.value = "";
+  elInputLastName.value = "";
+  elInputAge.value = "";
+  elInputSalary.value = "";
+  elInputDep.value = "";
+  renderEmployees();
 }
 
 function addEmployee() {
@@ -61,15 +98,7 @@ function addEmployee() {
     department: elInputDep.value,
   };
   gEmployees.push(newEmployee);
-
-  elInputFirstName.value = "";
-  elInputLastName.value = "";
-  elInputAge.value = "";
-  elInputSalary.value = "";
-  elInputDep.value = "";
-
   saveToStorage();
-  renderEmployees();
 }
 
 function removeEmployee(id) {
@@ -78,6 +107,23 @@ function removeEmployee(id) {
   renderEmployees();
 }
 
+function editEmployee(id) {
+  const indexEmployee = gEmployees.findIndex(
+    (currentEmployee) => id === currentEmployee.id
+  );
+  gEmployees[indexEmployee] = {
+    id: id,
+    firstName: elInputFirstName.value,
+    lastName: elInputLastName.value,
+    age: elInputAge.value,
+    startDate: gEmployees[indexEmployee].startDate,
+    salary: elInputSalary.value,
+    department: elInputDep.value,
+  };
+  saveToStorage();
+}
+
+// filter
 function filterFirst() {
   const inputName = document.getElementById("first");
 
@@ -133,14 +179,13 @@ function filterStartDate() {
   );
 
   renderEmployees(fakeEmployess);
-  console.log("ddd");
 }
-
+// events
 elForm.addEventListener("submit", function (ev) {
   ev.preventDefault();
 });
 
-btnAdd.addEventListener("click", addEmployee);
+btnAdd.addEventListener("click", handleAddClick);
 
 btnSort.addEventListener("click", function () {
   elList.classList.toggle("hidden");
@@ -149,6 +194,15 @@ btnSort.addEventListener("click", function () {
 elLies.forEach((li) => {
   li.addEventListener("click", function () {
     switch (li.textContent.trim()) {
+      case "- All -":
+        renderEmployees();
+        InputFirstName.style.display = "none";
+        InputLastName.style.display = "none";
+        InputAge.style.display = "none";
+        InputSalary.style.display = "none";
+        InputDep.style.display = "none";
+
+        break;
       case "First Name":
         elSortDiv.innerHTML = `
         <input type="text" id="first" placeholder="First name">
@@ -201,12 +255,12 @@ elLies.forEach((li) => {
     elList.classList.toggle("hidden");
   });
 });
-
-function getFromStorage(key) {
+// utils
+function getFromStorage() {
   return JSON.parse(localStorage.getItem(employees_STORAGE_KEY)) || [];
 }
 
-function saveToStorage(key, value) {
+function saveToStorage() {
   localStorage.setItem(employees_STORAGE_KEY, JSON.stringify(gEmployees));
 }
 

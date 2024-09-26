@@ -21,13 +21,13 @@
         <input type="text" id="last-name" placeholder="Last name" maxlength="10" >
         <input type="number" id="age" placeholder="age" min="18" max="120">
         <select id="dep">
-        <option value="" selected disabled >Department</option>
-          <option value="marketing">Marketing</option>
-          <option value="sales">Sales</option>
-          <option value="hr">Human Resources</option>
-          <option value="finance">Finance</option>
-          <option value="it">Information Technology</option>
-          <option value="operations">Operations</option>
+        <option selected disabled >Department</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Sales">Sales</option>
+          <option value="HR">HR</option>
+          <option value="Finance">Finance</option>
+          <option value="IT">IT</option>
+          <option value="Operations">Operations</option>
         </select>
         <input type="number" id="salary" placeholder="Salary" min="7000" max="100000">
 
@@ -36,9 +36,10 @@
     <h1>Employee List</h1>
     <div class="table">
         <div class="div-filter">
-        <button class="btn-filter"> sort 
+        <button class="btn-filter"> filter 
         </button>
             <ul id = "id-ul" class="hidden">
+                <li>- All -</li>
                 <li>First Name</li>
                 <li>Last Name</li>
                 <li>Age</li>
@@ -54,14 +55,12 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Age</th>
-                    <th>
-                        Department
-                    </th>
+                    <th> Department </th>
                     <th>Salary</th>
                     <th>Start date</th>
-                </thead>
-                <th>Edit / Delete</th>
-            </tr>
+                    <th>Edit / Delete</th>
+                </tr>
+            </thead>
             <tbody>
                
             </tbody>
