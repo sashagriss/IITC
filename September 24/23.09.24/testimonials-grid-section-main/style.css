@@ -1,0 +1,118 @@
+  @font-face {
+    font-family: family;
+    src: url();
+}
+:root{
+    --clr-violet: hsl(263, 55%, 52%);
+    --clr-dark-blue: hsl(217, 19%, 35%);
+    --clr-darker-blue: hsl(219, 29%, 14%);
+
+    --clr-light-gray: hsl(0, 0%, 81%);
+    --clt-light-blue: hsl(210, 46%, 95%);
+}
+
+
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    } 
+
+
+html,body{
+    
+    height: 100%;
+}
+
+img{
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.article{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    
+    
+}
+
+.main{
+    display: grid;
+    padding: 2rem 2rem;
+    gap: 16px;
+    font-size: 13px;
+    background-color: var(--clt-light-blue);
+}
+
+.all{
+    
+    padding: 16px;
+    background-color: cadetblue;
+    border-radius: 12px;
+}
+
+body{
+    
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    color: white;
+      
+}
+
+.head{
+    display:flex;
+    gap: 12px;
+    margin-bottom: 1rem;
+    align-items: center;
+}   
+
+h3{
+    margin-bottom: 1rem;
+}
+
+.daniel{
+    background-image: url(./images/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 70px ) center;
+    background-color: var(--clr-violet);
+    
+}
+.jon{
+background-color: var(--clr-dark-blue);
+}
+.janet{
+    background-color: white;
+    color:var(--clr-darker-blue) ;
+}
+.patrick{
+background-color: var(--clr-darker-blue);
+}
+.kira{
+    background-color: white;
+    color:var(--clr-darker-blue) ;
+}
+
+@media (min-width:900px){
+    .main{
+        padding: 8rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    }
+    .daniel{
+        grid-column: 1/3;
+    } 
+    .janet{
+        grid-column: 1; 
+    }  
+    .patrick{
+        grid-column:2/4;
+    }
+    .kira{
+        grid-column: 4;
+        grid-row: 1/3;
+    }
+}

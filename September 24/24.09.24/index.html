@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Table</title>
+   
+</head>
+<body>
+    <form>
+        <input type="text" id="first-name" placeholder="First name" maxlength="10">
+        <input type="text" id="last-name" placeholder="Last name" maxlength="10" >
+        <input type="number" id="age" placeholder="age" min="18" max="120">
+        <select id="dep">
+        <option value="" selected disabled >Department</option>
+          <option value="marketing">Marketing</option>
+          <option value="sales">Sales</option>
+          <option value="hr">Human Resources</option>
+          <option value="finance">Finance</option>
+          <option value="it">Information Technology</option>
+          <option value="operations">Operations</option>
+        </select>
+        <input type="number" id="salary" placeholder="Salary" min="7000" max="100000">
+
+        <button id="btn-add">Add</button>
+    </form>
+    <h1>Employee List</h1>
+    <div class="table">
+        <div class="div-filter">
+        <button class="btn-filter"> sort 
+        </button>
+            <ul id = "id-ul" class="hidden">
+                <li>First Name</li>
+                <li>Last Name</li>
+                <li>Age</li>
+                <li>Department</li>
+                <li>Salary</li>
+                <li>Start date</li>
+            </ul>
+            <div class="sorted"></div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>
+                        Department
+                    </th>
+                    <th>Salary</th>
+                    <th>Start date</th>
+                </thead>
+                <th>Edit / Delete</th>
+            </tr>
+            <tbody>
+               
+            </tbody>
+        </table>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>
+
