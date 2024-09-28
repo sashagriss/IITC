@@ -1,25 +1,14 @@
-const employees_STORAGE_KEY = "employees";
-let gEmployees = getFromStorage();
-let fakeEmployess = [...gEmployees];
-
+import { model } from "./model.js";
+import { utils } from "./utils.js";
+import { view } from "./view.js";
 let employeeEdit = null;
 
-function makeId() {
-  let id = "";
-  const possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for (let i = 0; i < 5; i++) {
-    id += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return id;
-}
 const elForm = document.querySelector("form");
 
 const elTbEmployee = document.querySelector("tbody");
 
 const btnAdd = document.getElementById("btn-add");
-const btnDelete = document.getElementById("delete");
-const btnEdit = document.getElementById("edit");
+
 const btnSort = document.querySelector(".btn-filter");
 
 const elInputFirstName = document.getElementById("first-name");
@@ -28,54 +17,62 @@ const elInputAge = document.getElementById("age");
 const elInputDep = document.getElementById("dep");
 const elInputSalary = document.getElementById("salary");
 
-const InputFirstName = document.getElementById("first");
-const InputLastName = document.getElementById("last");
-const InputAge = document.getElementById("age-sort");
-const InputDep = document.getElementById("department-inSort");
-const InputSalary = document.getElementById("salary-sort");
-
 const elList = document.getElementById("id-ul");
 const elLies = document.querySelectorAll("#id-ul li");
 
 const elSortDiv = document.querySelector(".sorted");
 
-function renderEmployees(fakeEmployess = gEmployees) {
+function renderEmployees(fakeEmployees) {
+  const gEmployees = fakeEmployees || utils.getFromStorage("employees");
   elTbEmployee.textContent = "";
-  for (let i = 0; i < fakeEmployess.length; i++) {
-    const employee = fakeEmployess[i];
-    const rowEnmployee = document.createElement("tr");
-    rowEnmployee.innerHTML = `
+  for (let i = 0; i < gEmployees.length; i++) {
+    const employee = gEmployees[i];
+    const rowEmployee = document.createElement("tr");
+    rowEmployee.innerHTML = `
         <td>${employee.firstName}</td>
         <td>${employee.lastName}</td>
         <td>${employee.age}</td>
         <td>${employee.department}</td>
         <td>${employee.salary}</td>
         <td>${employee.startDate}</td>
-        <td><button onclick ="showDataInInput('${employee.id}')"id="edit">Edit</button>
-         <button onclick="removeEmployee('${employee.id}')" id="delete" >Delete</button></td>
+        <td ><button id="edit">Edit</button>
+         <button id="delete" >Delete</button></td>
         `;
-    elTbEmployee.appendChild(rowEnmployee);
-  }
-}
-function showDataInInput(id) {
-  const employeeEditMe = gEmployees.find(
-    (currentEmployee) => id === currentEmployee.id
-  );
-  elInputFirstName.value = employeeEditMe.firstName;
-  elInputLastName.value = employeeEditMe.lastName;
-  elInputAge.value = employeeEditMe.age;
-  elInputSalary.value = employeeEditMe.salary;
-  elInputDep.value = employeeEditMe.department;
+    elTbEmployee.appendChild(rowEmployee);
 
-  btnAdd.textContent = "complete";
-  employeeEditMe = id;
+    const btnDelete = rowEmployee.querySelector("#delete");
+    const btnEdit = rowEmployee.querySelector("#edit");
+
+    btnDelete.addEventListener("click", function (ev) {
+      model.removeEmployee(employee.id);
+      renderEmployees();
+    });
+
+    btnEdit.addEventListener("click", function (ev) {
+      showDataInInput(employee.id);
+      renderEmployees();
+    });
+  }
 }
 
 function handleAddClick() {
   if (!employeeEdit) {
-    addEmployee();
+    model.addEmployee(
+      elInputFirstName.value,
+      elInputLastName.value,
+      elInputAge.value,
+      elInputSalary.value,
+      elInputDep.value
+    );
   } else {
-    editEmployee(employeeEdit);
+    model.editEmployee(
+      employeeEdit,
+      elInputFirstName.value,
+      elInputLastName.value,
+      elInputAge.value,
+      elInputSalary.value,
+      elInputDep.value
+    );
     btnAdd.textContent = "Add";
     employeeEdit = null;
   }
@@ -87,98 +84,19 @@ function handleAddClick() {
   renderEmployees();
 }
 
-function addEmployee() {
-  const newEmployee = {
-    id: makeId(),
-    firstName: elInputFirstName.value,
-    lastName: elInputLastName.value,
-    age: elInputAge.value,
-    startDate: getCurrentDateInYYYYMMDD(),
-    salary: elInputSalary.value,
-    department: elInputDep.value,
-  };
-  gEmployees.push(newEmployee);
-  saveToStorage();
-}
-
-function removeEmployee(id) {
-  gEmployees = gEmployees.filter((employee) => employee.id !== id);
-  saveToStorage();
-  renderEmployees();
-}
-
-function editEmployee(id) {
-  const indexEmployee = gEmployees.findIndex(
+function showDataInInput(id) {
+  let gEmployees = utils.getFromStorage("employees");
+  const employeeEditMe = gEmployees.find(
     (currentEmployee) => id === currentEmployee.id
   );
-  gEmployees[indexEmployee] = {
-    id: id,
-    firstName: elInputFirstName.value,
-    lastName: elInputLastName.value,
-    age: elInputAge.value,
-    startDate: gEmployees[indexEmployee].startDate,
-    salary: elInputSalary.value,
-    department: elInputDep.value,
-  };
-  saveToStorage();
-}
+  elInputFirstName.value = employeeEditMe.firstName;
+  elInputLastName.value = employeeEditMe.lastName;
+  elInputAge.value = employeeEditMe.age;
+  elInputSalary.value = employeeEditMe.salary;
+  elInputDep.value = employeeEditMe.department;
 
-// filter
-function filterFirst() {
-  const inputName = document.getElementById("first");
-
-  fakeEmployess = gEmployees.filter(
-    (employee) =>
-      employee.firstName.toUpperCase() === inputName.value.toUpperCase()
-  );
-
-  renderEmployees(fakeEmployess);
-}
-function filterLast() {
-  const inputName = document.getElementById("last");
-
-  fakeEmployess = gEmployees.filter(
-    (employee) =>
-      employee.lastName.toUpperCase() === inputName.value.toUpperCase()
-  );
-
-  renderEmployees(fakeEmployess);
-}
-function filterAge() {
-  const inputAge = document.getElementById("age-sort");
-
-  fakeEmployess = gEmployees.filter(
-    (employee) => employee.age === inputAge.value
-  );
-
-  renderEmployees(fakeEmployess);
-}
-function filterDep() {
-  const inputDep = document.getElementById("department-inSort");
-  fakeEmployess = gEmployees.filter(
-    (employee) => employee.department === inputDep.value
-  );
-
-  renderEmployees(fakeEmployess);
-}
-function filterSalary() {
-  const inputSalary = document.getElementById("salary-sort");
-  fakeEmployess = gEmployees.filter(
-    (employee) => employee.salary === inputSalary.value
-  );
-
-  renderEmployees(fakeEmployess);
-}
-function filterStartDate() {
-  const inputDate = document.getElementById("date-start");
-  const inputEnd = document.getElementById("date-end");
-  fakeEmployess = gEmployees.filter(
-    (employee) =>
-      new Date(employee.startDate) >= new Date(inputDate.value) &&
-      new Date(employee.startDate) <= new Date(inputEnd.value)
-  );
-
-  renderEmployees(fakeEmployess);
+  btnAdd.textContent = "complete";
+  employeeEdit = id;
 }
 // events
 elForm.addEventListener("submit", function (ev) {
@@ -196,77 +114,108 @@ elLies.forEach((li) => {
     switch (li.textContent.trim()) {
       case "- All -":
         renderEmployees();
-        InputFirstName.style.display = "none";
-        InputLastName.style.display = "none";
-        InputAge.style.display = "none";
-        InputSalary.style.display = "none";
-        InputDep.style.display = "none";
-
+        // InputFirstName.style.display = "none";
+        // InputLastName.style.display = "none";
+        // InputAge.style.display = "none";
+        // InputSalary.style.display = "none";
+        // InputDep.style.display = "none";
+        location.reload(true);
         break;
       case "First Name":
         elSortDiv.innerHTML = `
         <input type="text" id="first" placeholder="First name">
-        <button onclick="filterFirst()" id="btn-search">Search</button>
+        <button class="btn-search" >Search</button>
         `;
+        const InputFirstName = document.getElementById("first");
+        elSortDiv
+          .querySelector(".btn-search")
+          .addEventListener("click", (e) => {
+            renderEmployees(view.filterFirst(InputFirstName.value));
+          });
+
         break;
       case "Last Name":
         elSortDiv.innerHTML = `
         <input type="text" id="last" placeholder="Last name">
-        <button onclick="filterLast()" id="btn-search">Search</button>
+        <button class="btn-search">Search</button>
         `;
+        const InputLastName = document.getElementById("last");
+        elSortDiv
+          .querySelector(".btn-search")
+          .addEventListener("click", (e) => {
+            renderEmployees(view.filterLast(InputLastName.value));
+          });
+
         break;
       case "Age":
         elSortDiv.innerHTML = `
         <input type="number" id="age-sort" placeholder="18" min="18" max="120">
-        <button onclick="filterAge()" id="btn-search">Search</button>
+        <button class="btn-search">Search</button>
         `;
+
+        const InputAge = document.getElementById("age-sort");
+        elSortDiv
+          .querySelector(".btn-search")
+          .addEventListener("click", (e) => {
+            renderEmployees(view.filterAge(InputAge.value));
+          });
         break;
       case "Department":
         elSortDiv.innerHTML = `
         <select id="department-inSort">
         <option selected disabled >Department</option>
-          <option value="marketing">Marketing</option>
-          <option value="sales">Sales</option>
-          <option value="hr">Human Resources</option>
-          <option value="finance">Finance</option>
-          <option value="it">Information Technology</option>
-          <option value="operations">Operations</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Sales">Sales</option>
+          <option value="HR">HR</option>
+          <option value="Finance">Finance</option>
+          <option value="IT">IT</option>
+          <option value="Operations">Operations</option>
         </select>
-        <button onclick="filterDep()" id="btn-search">Search</button>
+        <button class="btn-search">Search</button>
         `;
+        const InputDep = document.getElementById("department-inSort");
+        elSortDiv
+          .querySelector(".btn-search")
+          .addEventListener("click", (e) => {
+            renderEmployees(view.filterDep(InputDep.value));
+          });
+
         break;
+
       case "Salary":
         elSortDiv.innerHTML = `
           <input type="number" id="salary-sort" placeholder="7000" min="7000" max="100000">
-          <button onclick="filterSalary()" id="btn-search">Search</button>
+          <button class="btn-search" >Search</button>
           `;
+        const InputSalary = document.getElementById("salary-sort");
+        elSortDiv
+          .querySelector(".btn-search")
+          .addEventListener("click", (e) => {
+            renderEmployees(view.filterSalary(InputSalary.value));
+          });
         break;
       case "Start date":
         elSortDiv.innerHTML = `
         <label>From:</label>
-          <input type="date" id="date-start" >
+          <input type="date" class="date-start" >
           <label>To:</label>
-            <input type="date" id="date-end">
-            <button onclick="filterStartDate()" id="btn-search">Search</button>
+            <input type="date" class="date-end">
+            <button class="btn-search" >Search</button>
           `;
+        const InputStartDate = document.querySelector(".date-start");
+        const InputEndDate = document.querySelector(".date-end");
+        elSortDiv
+          .querySelector(".btn-search")
+          .addEventListener("click", (e) => {
+            renderEmployees(
+              view.filterStartDate(InputStartDate.value, InputEndDate.value)
+            );
+          });
         break;
     }
     renderEmployees();
     elList.classList.toggle("hidden");
   });
 });
-// utils
-function getFromStorage() {
-  return JSON.parse(localStorage.getItem(employees_STORAGE_KEY)) || [];
-}
-
-function saveToStorage() {
-  localStorage.setItem(employees_STORAGE_KEY, JSON.stringify(gEmployees));
-}
-
-function getCurrentDateInYYYYMMDD() {
-  const date = new Date();
-  return date.toISOString().split("T")[0];
-}
 
 renderEmployees();

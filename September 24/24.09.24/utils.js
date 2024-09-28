@@ -1,3 +1,15 @@
+function getFromStorage(key) {
+  return JSON.parse(localStorage.getItem(key)) || [];
+}
+
+function saveToStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getCurrentDateInYYYYMMDD() {
+  const date = new Date();
+  return date.toISOString().split("T")[0];
+}
 function makeId() {
   let id = "";
   const possible =
@@ -8,16 +20,9 @@ function makeId() {
   return id;
 }
 
-function getFromStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
-}
-
-function saveToStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
-
 export const utils = {
   makeId,
   getFromStorage,
   saveToStorage,
+  getCurrentDateInYYYYMMDD,
 };
