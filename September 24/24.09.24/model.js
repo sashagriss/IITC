@@ -2,18 +2,29 @@ import { utils } from "./utils.js";
 const employees_STORAGE_KEY = "employees";
 
 function addEmployee(firstName, lastName, age, salary, department) {
-  let gEmployees = utils.getFromStorage(employees_STORAGE_KEY);
-  const newEmployee = {
-    id: utils.makeId(),
-    firstName,
-    lastName,
-    age,
-    startDate: utils.getCurrentDateInYYYYMMDD(),
-    salary,
-    department,
-  };
-  gEmployees.push(newEmployee);
-  utils.saveToStorage(employees_STORAGE_KEY, gEmployees);
+  if (
+    firstName === "" ||
+    lastName === "" ||
+    age === "" ||
+    salary === "" ||
+    department === ""
+  ) {
+    alert("Buddy, you forgot to fill some field ");
+    return;
+  } else {
+    let gEmployees = utils.getFromStorage(employees_STORAGE_KEY);
+    const newEmployee = {
+      id: utils.makeId(),
+      firstName,
+      lastName,
+      age,
+      startDate: utils.getCurrentDateInYYYYMMDD(),
+      salary,
+      department,
+    };
+    gEmployees.push(newEmployee);
+    utils.saveToStorage(employees_STORAGE_KEY, gEmployees);
+  }
 }
 
 function removeEmployee(id) {
