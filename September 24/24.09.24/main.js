@@ -188,6 +188,7 @@ elLies.forEach((li) => {
           <button class="btn-search" >Search</button>
           `;
         const InputSalary = document.getElementById("salary-sort");
+        const elRange = document.querySelector(".salary-range");
         elSortDiv
           .querySelector(".btn-search")
           .addEventListener("click", (e) => {

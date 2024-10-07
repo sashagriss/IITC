@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="article">
+            <h1>Bank-Griss </h1>
+            <form>
+                <label for="pin"> Enter PIN</label>
+                <input  name="PIN" id="pin" maxlength="4">
+                <button id="submit"> Submit</button>
+            </form>
+            <p id="validation"></p>
+            <nav>
+                <ul class="hidden">
+            
+                        <li><button id="deposit">Deposit</button></li>
+                        <li><button id="withdraw">Withdraw</button></li>
+                        <li><button id="balance">Balance</button></li>
+                        <li><button id="last-operation">Last Operations</button></li>
+            
+                </ul>
+            </nav>
+            <div class="container">
+                <div id="withdrawEl" class="hidden">
+                    <h1>
+                        Withdraw
+                    </h1>
+                    <form>
+                        <input id="input-withdraw" placeholder="0" type="number" min="20">
+                        <button id="operation-withdraw" type="button">Submit</button>
+                    </form>
+                </div>
+                <div id="depositEl" class="hidden">
+                    <h1>
+                        Deposit
+                    </h1>
+                    <form >
+                        <input id="input-deposit" placeholder="0" type="number" min="20">
+                        <button id="operation-deposit" type="button">Submit</button>
+                    </form>
+                </div>
+                <div id="balanceEl" class="hidden">
+                    <h1>
+                        Balance
+                    </h1>
+                    <p id="userBalance"></p>
+                </div>
+                <div id="last-operationEl" class="hidden">
+                    <h1>
+                        Last Operations
+                    </h1>
+                    <ul id="ul"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
