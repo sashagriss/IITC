@@ -38,6 +38,8 @@ const lastOperations = document.getElementById("last-operationEl");
 const elBalance = document.getElementById("balanceEl");
 
 const elUl = document.getElementById("ul");
+const h4 = document.querySelector("h4");
+const btnExit = document.querySelector(".btnn");
 
 const userInput = document.querySelector("input");
 let attempts = 0;
@@ -48,13 +50,15 @@ Elform.addEventListener("submit", (ev) => {
     if (userInput.value === curClient.pin) {
       ulOperations.classList.remove("hidden");
       Elform.classList.add("hidden");
-
+      h4.classList.add("h4");
+      btnExit.classList.remove("btnn");
       return true;
     }
   });
   if (!isClient) {
     validP.textContent = "PIN INcorrect, try again!";
     attempts++;
+    h4.classList.add("h4");
     if (attempts >= 3) {
       alert(
         "You have reached the limit, please try again later or contact us *3665"
@@ -118,6 +122,9 @@ function showBalance(id) {
   balance.textContent = `${currentClient.currentBalance}$`;
   elBalance.appendChild(balance);
 }
+function backToWelcome() {
+  location.reload();
+}
 
 elOpDeposit.addEventListener("click", () => {
   deposit(userInput.value);
@@ -131,4 +138,7 @@ elLastOpB.addEventListener("click", () => {
 elBalanceB.addEventListener("click", () => {
   balance.textContent = "";
   showBalance(userInput.value);
+});
+btnExit.addEventListener("click", () => {
+  backToWelcome();
 });
