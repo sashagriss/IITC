@@ -1,5 +1,5 @@
 :root{
- --color-white: hsl(0, 0%, 100%);
+--color-white: hsl(0, 0%, 100%);
 --light-pink: hsl(275, 100%, 97%);
 --grayish-purple: hsl(292, 16%, 49%);
 --dark-purple: hsl(292, 42%, 14%);
@@ -19,32 +19,39 @@ body,html{
     height: 100vh;
     
 }
+
 .main{
+    position: relative;
     font-family: "baba";
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     background-color: var(--light-pink);
-    background-image: url(./assets/images/background-pattern-mobile.svg);
-     background-position: top center;
-    background-attachment: fixed;
-     background-repeat: no-repeat; 
-     background-size: contain;
-    
+}
+.mobile{
+    z-index: 0;
+    position: absolute; 
+    width: 100%;
+    top: 0;
+}
+.bg{
+    display: none;
 }
 .article{
+    font-size: 18px;
+    z-index: 1;
     font-size: 10px;
     margin: 1.6rem;
     padding: 1.6rem;
     background-color: var(--color-white);
-    width: 95%;
+    /* width: 95%; */
     border-radius: 15px;
     box-shadow: 0px 30px 100px -50px black ;
 }
 hr{
     margin: 0.5rem;
-     background-color: rgb(150, 149, 149);
+    background-color: rgb(150, 149, 149);
       
 }
 .answer{
@@ -54,11 +61,9 @@ hr{
 .heading{
     font-size: 15px;
     display: flex;
-    /* align-items: center; */
     gap :30px;
 }
 .question {
- 
     display: flex;
     justify-content:space-between ;
     align-items: center;
@@ -72,8 +77,8 @@ hr{
 }
 .plus-minus{
     border: 0;
-    height: 30px;
-    width: 30px;
+    min-height: 30px;
+    min-width: 30px;
     background: url(./assets/images/icon-plus.svg) no-repeat;
     background-size: cover;
     transition: 0.3 ease;
@@ -81,8 +86,19 @@ hr{
 }
 
 @media (min-width:650px) {
-   .article{
-       max-width: 500px;
-} 
+.bg {
+    display: block; 
+    position: absolute;
+    top: 0;
+    width: 120%; 
+}   
+.mobile {
+   display: none;
+}
+.article{
+    font-size: 16px;
+    max-width: 500px;
+
+}
  
 }
