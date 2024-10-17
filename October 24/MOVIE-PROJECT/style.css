@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 /* Reset and base styles */
 body {
     margin: 0;
@@ -9,10 +12,14 @@ body {
   
   /* Navigation Bar */
   nav {
+    position: relative;
     background-color: #333;
     padding: 10px;
     text-align: center;
+    height: 50px;
+
   }
+   
   
   nav a {
     color: #fff;
@@ -37,6 +44,10 @@ body {
     list-style: none;
   }
   
+  .container{
+  max-width: 200px;
+  }
+
   /* Each Movie Item */
   .card {
     display: flex;
@@ -67,6 +78,7 @@ body {
   }
   
   .description {
+    margin: 0;
     position: absolute;
     text-align: center;
     top: 0;
@@ -85,3 +97,148 @@ body {
 .card:hover .description {
     opacity: 1;
 }
+
+/* Styling the select container */
+#select {
+    margin-left: 1.2rem;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 14px;
+    width: 180px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  /* Add a custom arrow to the select */
+  #select::after {
+    /* content: "▼"; */
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+    color: #fff;
+    font-size: 12px;
+  }
+  
+  /* On hover and focus, the border and shadow change */
+  #select:hover, #select:focus {
+    border-color: #666;
+  }
+  
+ #input-search,
+ #input-byId{
+    background-color: #fbfafa;
+    border: 1px;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 14px;
+    width: 180px;
+    margin-left:0.5rem ;
+ }
+#btn-search,
+#btn-searchId{
+    margin-left:0.2rem ;
+    background-color: #ffa200;
+    border: 1px;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 14px;
+    
+}
+#btn-search:hover,
+#btn-searchId:hover
+{
+    background-color: #ff9500;
+    cursor: pointer;
+}
+
+.hidden{
+    display: none;
+}
+
+#logo{
+    top: 0;
+    left: 2rem;
+    position: absolute;
+    height: 100%;
+    width:auto;
+}
+
+nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.trending-h4{
+    text-align: center;
+    font-size: 24px;
+}
+
+.about{
+  margin-inline:12px
+}
+.nav-about{
+ padding-top: 16px;
+}
+
+@media (max-width:680px) {
+  
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.nav-links a {
+    margin: 10px 0;
+}
+
+.menu-toggle {
+    display: block;
+}
+.nav-active {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  
+}
+#movie-container{
+  place-items: center;
+
+}
+#logo{
+  display: none;
+}
+#btn-searchId{
+  max-width: fit-content;
+}
+
+.span-search{
+  padding-bottom: 8px;
+}
+}
+
+

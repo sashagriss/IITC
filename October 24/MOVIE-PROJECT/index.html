@@ -8,16 +8,45 @@
 </head>
 <body>
     <nav>
-        Home
+        <div class="menu-toggle" id="mobile-menu">&#9776;</div> 
+        <div class="nav-links" id="nav-links">
+        <a href="/index.html">Home</a>
         <a href="/about.html">About</a>
-        <input placeholder="Find movie">
-        <button>Search</button>
+        
+            <img id="logo" src="./FigJam Basics (2).jpg" alt="">
+                <span class="span-search">
+                    <input id="input-search" placeholder="Find movie">
+                    <button id="btn-search">Search</button>
+                </span>
+               <span class="span-id">
+                    <input id="input-byId" class="hidden" placeholder="Find movie by id">
+                    <button id="btn-searchId">By id</button>
+                </span>
+            </div>
       </nav>
-      
-      <h1>Popular Movies</h1>
 
-     <ul id="movie-container">
-     </ul>
+      <div class="home-page">
+          <h1>Popular Movies</h1>
+          <select id="select">
+            <option  value="all">All popular</option>
+            <option value="week">Of the week</option>
+            <option value="day">Of the day</option>
+          </select>
+          <h4 class="trending-h4">All popular movies</h4>
+          
+               <ul id="movie-container">
+               </ul>
+      </div>
+      <div class="movie-details-page">
+<div class="details-container">
+    <div class="img-container"></div>
+    <div class="description-container"></div>
+</div>
+<div class="cast-card">
+    <div class="cast-img"></div>
+    <div class="cast-text"></div>
+</div>
+      </div>
    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script  type="module" src="./controller.js"></script>
