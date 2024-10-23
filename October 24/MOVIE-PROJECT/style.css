@@ -20,7 +20,6 @@ body {
 
   }
    
-  
   nav a {
     color: #fff;
     text-decoration: none;
@@ -78,6 +77,9 @@ body {
   }
   
   .description {
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-between;
     margin: 0;
     position: absolute;
     text-align: center;
@@ -92,7 +94,16 @@ body {
     opacity: 0;
     transition: opacity 0.3s;
 }
+
+.favorite{
+  background-color: #ff9500;
+  /* margin-top: 70%; */
+}
   
+.fav-div{
+  font-size: 18px;
+  margin-inline:10px ;
+}
 /* Show description on hover */
 .card:hover .description {
     opacity: 1;
@@ -111,6 +122,9 @@ body {
     transition: border-color 0.3s, box-shadow 0.3s;
   }
   
+  #select:empty{
+    display: none;
+  }
   /* Add a custom arrow to the select */
   #select::after {
     /* content: "▼"; */
@@ -121,7 +135,7 @@ body {
     font-size: 12px;
   }
   
-  /* On hover and focus, the border and shadow change */
+
   #select:hover, #select:focus {
     border-color: #666;
   }
@@ -165,18 +179,14 @@ body {
     width:auto;
 }
 
-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+
 
 .nav-links a {
   color: #fff;
-  text-decoration: none;
   font-size: 18px;
   margin: 0 10px;
 }
+
 
 .menu-toggle {
   display: none;
@@ -198,9 +208,48 @@ nav-links {
  padding-top: 16px;
 }
 
+/* //////////////////// PAGE 2 /////////////////////// */
+.hide-page2{
+  display: none;
+}
+.movie-details-page{
+  padding: 1.2rem;
+  /* display: flex; */
+}
+
+.details-container{
+  display: flex;
+}
+.img-page2{
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  padding:24px ;
+}
+.img-container{
+  width: 300px;
+}
+.description-container{
+  padding-top :18px;
+}
+
+.cast-container{
+  overflow: auto;  
+  display: flex;
+  scroll-snap-type: x mandatory;
+}
+
+.cast-img{
+  display: block;
+  width: 150px;
+  min-height: 225px;
+  
+}
+
 @media (max-width:680px) {
   
   .nav-links {
+    z-index: 1;
     display: none;
     flex-direction: column;
     position: absolute;
@@ -212,9 +261,11 @@ nav-links {
     padding: 10px 0;
 }
 
-.nav-links a {
-    margin: 10px 0;
+
+#nav-links{
+  display: none;
 }
+
 
 .menu-toggle {
     display: block;
@@ -225,20 +276,26 @@ nav-links {
   align-items: center;
   
 }
-#movie-container{
-  place-items: center;
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} 
+#movie-container:empty{
+  display: none;
 
 }
 #logo{
   display: none;
 }
-#btn-searchId{
+/* #btn-searchId{
   max-width: fit-content;
-}
+} */
 
-.span-search{
+/* .span-search{
   padding-bottom: 8px;
-}
+} */
 }
 
 

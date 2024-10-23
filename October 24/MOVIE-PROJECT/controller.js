@@ -1,8 +1,10 @@
 import { model } from "./models.js";
 import { secret } from "./secret.js";
+import { utils } from "./utils.js";
 import { views } from "./views.js";
 
 let data;
+let isFavorite = false;
 const elSearchInput = document.getElementById("input-search");
 const elSearchBtn = document.getElementById("btn-search");
 const elSearchIdBtn = document.getElementById("btn-searchId");
@@ -12,6 +14,14 @@ const elSearchInputID = document.getElementById("input-byId");
 const elTrending = document.querySelector(".trending-h4");
 
 const elSelect = document.getElementById("select");
+
+const elPageFav = document.querySelector(".fav-div");
+elPageFav.addEventListener("click", () => {
+  isFavorite = true;
+  views.renderPopularMovies(views.gMovies);
+  addToFav();
+  getAllLiMovies();
+});
 
 elSelect.addEventListener("change", (ev) => {
   if (ev.target.value === "week") {
@@ -26,18 +36,31 @@ elSelect.addEventListener("change", (ev) => {
   }
   model
     .getPopularMovies()
-    .then((response) => views.renderPopularMovies(response));
+    .then((response) => views.renderPopularMovies(response))
+    .then(() => {
+      getAllLiMovies();
+    })
+    .then(() => {
+      addToFav();
+    });
 });
 
 model
   .getPopularMovies()
   .then((response) => views.renderPopularMovies(response))
-  .then(() => getAllLiMovies());
+  .then(() => getAllLiMovies())
+  .then(() => addToFav());
 
 elSearchInput.addEventListener("input", () => {
+  let curData;
+  if (isFavorite) {
+    curData = () => Promise.resolve(views.gMovies);
+  } else {
+    curData = model.getPopularMovies;
+  }
   data = views.searchMovieByName(elSearchInput.value, model.getPopularMovies);
   views
-    .searchMovieByName(elSearchInput.value, model.getPopularMovies)
+    .searchMovieByName(elSearchInput.value, curData)
     .then((response) => views.renderPopularMovies(response));
 });
 
@@ -73,9 +96,20 @@ const getAllLiMovies = () => {
 
   elAllLiMovies.forEach((item) => {
     item.addEventListener("click", () => {
-      model
-        .getMovieDetails(item.id)
-        .then((response) => views.renderMovieDetails(response));
+      model.getMovieDetails(item.id).then((response) => {
+        views.renderMovieDetails(response);
+        addToFav();
+      });
+    });
+  });
+};
+const addToFav = () => {
+  const elFavorites = document.querySelectorAll(".favorite");
+
+  elFavorites.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      event.stopPropagation();
+      model.filterAndSaveToLocalStorage(item.id, item);
     });
   });
 };

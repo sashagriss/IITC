@@ -1,4 +1,6 @@
 import { secret } from "./secret.js";
+import { utils } from "./utils.js";
+import { views } from "./views.js";
 const allPopular = "/movie/popular?";
 const byWeek = "/trending/movie/week?";
 const byDay = "/trending/movie/day?";
@@ -50,6 +52,32 @@ function getMovieDetails(movieId) {
     });
 }
 
+const filterAndSaveToLocalStorage = (id, item) => {
+  model.getPopularMovies().then((res) => {
+    const checkIfExists = views.gMovies.some((movie) => {
+      return movie.id === Number(id);
+    });
+    if (checkIfExists) {
+      item.textContent = "Add to FAV";
+      removeFromFav(id);
+
+      return;
+    } else {
+      const filteredMovies = res.filter((movie) => movie.id === Number(id));
+      views.gMovies.push(...filteredMovies);
+      item.textContent = "Added to FAV";
+      utils.saveToStorage(secret.KEY_STORAGE, views.gMovies);
+    }
+  });
+};
+
+const removeFromFav = (id) => {
+  views.gMovies = views.gMovies.filter((movie) => {
+    return movie.id !== Number(id);
+  });
+  utils.saveToStorage(secret.KEY_STORAGE, views.gMovies);
+};
+
 export const model = {
   getPopularMovies,
   updateCurrentUrl,
@@ -58,4 +86,6 @@ export const model = {
   allPopular,
   getMovieById,
   getMovieDetails,
+  filterAndSaveToLocalStorage,
+  removeFromFav,
 };
