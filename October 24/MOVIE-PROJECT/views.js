@@ -55,7 +55,9 @@ const renderPopularMovies = (movies) => {
     elFavorite.setAttribute("id", movie.id);
 
     const isFavorite = gMovies.some((fav) => fav.id === movie.id);
-    elFavorite.textContent = isFavorite ? "Added to FAV" : "Add to FAV";
+    elFavorite.innerHTML = isFavorite
+      ? "Remove from &#x1F5A4;"
+      : "Add to &#x2661";
 
     elUl.appendChild(elLi);
     elContainer.appendChild(elCard);
@@ -83,6 +85,8 @@ menuToggle.addEventListener("click", () => {
 
 const renderMovieDetails = (movie) => {
   elPage2.classList.remove("hide-page2");
+  const elHomePage = document.querySelector(".home-page");
+  clearTextContent(elHomePage);
 
   // only year release
   const dateMovie = new Date(movie.release_date);
@@ -99,8 +103,18 @@ const renderMovieDetails = (movie) => {
   };
   const movieRating = roundedRating(movie.vote_average);
 
-  const elHomePage = document.querySelector(".home-page");
-  clearTextContent(elHomePage);
+  const backdropPath = movie.backdrop_path
+    ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
+    : "fallback-image-url.jpg";
+
+  const elDetailContainer = document.querySelector(".details-container");
+  const elImgBkg = document.querySelector(".bkg-img");
+
+  // const elImgBkg = document.createElement("img");
+  // elImgBkg.classList.add("bkg-img");
+  elImgBkg.src = backdropPath;
+  elImgBkg.alt = movie.title;
+  // elDetailContainer.appendChild(elImgBkg);
 
   const elImgContainer = document.querySelector(".img-container");
   elImgContainer.innerHTML = ` <img class="img-page2"src=" https://image.tmdb.org/t/p/w500${
@@ -109,8 +123,8 @@ const renderMovieDetails = (movie) => {
   <div class="favorite detail-page-too" id="${movie.id}">
       ${
         views.gMovies.some((fav) => fav.id === movie.id)
-          ? "Added to favorite"
-          : "Add to favorite"
+          ? "Remove from &#x1F5A4;"
+          : "Add to &#x2661;"
       }
     </div>
   `;
@@ -157,7 +171,7 @@ const renderMovieDetails = (movie) => {
     elCastImg.src = `https://image.tmdb.org/t/p/w500${person.profile_path}`;
     elCastImg.alt = `${person.name} photo`;
     elCastImg.onerror = () => {
-      elCastImg.src = `./kindpng_4296037.png
+      elCastImg.src = `./assets/kindpng_4296037.png
 `;
     };
     elCastContainer.appendChild(elCastCard);

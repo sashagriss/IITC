@@ -43,9 +43,9 @@ function getMovieDetails(movieId) {
       `${secret.BASE_URL}/movie/${movieId}?${secret.API_KEY}&append_to_response=credits`
     )
     .then((response) => {
-      console.log("Movie details:", response.data);
       return response.data;
     })
+
     .catch((error) => {
       console.error("Error fetching movie by ID:", error);
       throw error;
@@ -58,14 +58,14 @@ const filterAndSaveToLocalStorage = (id, item) => {
       return movie.id === Number(id);
     });
     if (checkIfExists) {
-      item.textContent = "Add to FAV";
+      item.innerHTML = "Add to &#x2661";
       removeFromFav(id);
 
       return;
     } else {
       const filteredMovies = res.filter((movie) => movie.id === Number(id));
       views.gMovies.push(...filteredMovies);
-      item.textContent = "Added to FAV";
+      item.innerHTML = "Remove from &#x1F5A4;";
       utils.saveToStorage(secret.KEY_STORAGE, views.gMovies);
     }
   });
