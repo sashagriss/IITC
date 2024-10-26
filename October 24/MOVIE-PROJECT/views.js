@@ -107,14 +107,10 @@ const renderMovieDetails = (movie) => {
     ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
     : "fallback-image-url.jpg";
 
-  const elDetailContainer = document.querySelector(".details-container");
   const elImgBkg = document.querySelector(".bkg-img");
 
-  // const elImgBkg = document.createElement("img");
-  // elImgBkg.classList.add("bkg-img");
   elImgBkg.src = backdropPath;
   elImgBkg.alt = movie.title;
-  // elDetailContainer.appendChild(elImgBkg);
 
   const elImgContainer = document.querySelector(".img-container");
   elImgContainer.innerHTML = ` <img class="img-page2"src=" https://image.tmdb.org/t/p/w500${

@@ -30,7 +30,6 @@ const getMovieById = async (id) => {
       `https:api.themoviedb.org/3/movie/${id}?${secret.API_KEY}`
     );
     const movie = response.data;
-    console.log(movie);
 
     return movie;
   } catch (error) {
