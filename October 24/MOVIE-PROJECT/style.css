@@ -42,9 +42,6 @@ body {
     list-style: none;
   }
 
-  .each-movie{
-  }
-  
   .container{
   max-width: 200px;
   }
@@ -55,8 +52,9 @@ body {
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    width: 200px;
+    width: 100%;
     transition: transform 0.3s;
+    
   }
   
   .card:hover {
@@ -115,12 +113,11 @@ body {
   font-size: 18px;
   margin-inline:10px ;
 }
-/* Show description on hover */
+
 .card:hover .description {
     opacity: 1;
 }
 
-/* Styling the select container */
 #select {
     margin-left: 1.2rem;
     background-color: #333;
@@ -136,9 +133,8 @@ body {
   #select:empty{
     display: none;
   }
-  /* Add a custom arrow to the select */
+
   #select::after {
-    /* content: "▼"; */
     position: absolute;
     right: 10px;
     pointer-events: none;
@@ -225,14 +221,12 @@ body {
 }
 .movie-details-page{
   padding: 1.2rem;
-  /* display: flex; */
 }
 
 .details-container{
   display: flex;
   position: relative;
   width: 100%;
-  /* height: 400px;  */
   overflow: hidden;
   margin-bottom: 30px;
   border-radius: 8px;
@@ -340,10 +334,13 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.img-page2{
+.container{
+  max-width: 150px;
 
+  }
+  #movie-container {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
 }
 }
-
 
 

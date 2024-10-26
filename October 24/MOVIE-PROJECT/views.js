@@ -47,7 +47,7 @@ const renderPopularMovies = (movies) => {
       return text;
     };
     const elDescription = document.createElement("p");
-    elDescription.textContent = truncateOverview(movie.overview, 70);
+    elDescription.textContent = truncateOverview(movie.overview, 60);
     elDescription.classList.add("description");
 
     const elFavorite = document.createElement("div");

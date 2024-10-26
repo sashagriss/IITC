@@ -16,11 +16,13 @@ const elTrending = document.querySelector(".trending-h4");
 const elSelect = document.getElementById("select");
 
 const elPageFav = document.querySelector(".fav-div");
+
 elPageFav.addEventListener("click", () => {
   isFavorite = true;
   views.renderPopularMovies(views.gMovies);
   addToFav();
   getAllLiMovies();
+  elTrending.textContent = "Favorite list";
 });
 
 elSelect.addEventListener("change", (ev) => {
