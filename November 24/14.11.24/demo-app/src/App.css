@@ -1,0 +1,25 @@
+/* @font-face {
+  font-family:outfit ;
+  src: url('./recipe-page-main\ 2/assets/fonts/outfit');
+}
+@font-face {
+  font-family:young ;
+  src: url('./recipe-page-main\ 2/assets/fonts/young');
+} */
+
+*{ 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .app{
+padding: 20px;
+  height: 100%;
+  background-color:  hsl(30, 18%, 87%);
+}

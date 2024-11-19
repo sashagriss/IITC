@@ -1,10 +1,13 @@
 import { model } from "./models.js";
-import { secret } from "./secret.js";
-import { utils } from "./utils.js";
 import { views } from "./views.js";
 
+// Global var for
 let data;
+
+// at the beginning movies are not fav
 let isFavorite = false;
+
+// getting elements
 const elSearchInput = document.getElementById("input-search");
 const elSearchBtn = document.getElementById("btn-search");
 const elSearchIdBtn = document.getElementById("btn-searchId");
@@ -17,6 +20,10 @@ const elSelect = document.getElementById("select");
 
 const elPageFav = document.querySelector(".fav-div");
 
+const menuToggle = document.getElementById("mobile-menu");
+const navLinks = document.getElementById("nav-links");
+
+// showing the fav page while clicking on favorite button
 elPageFav.addEventListener("click", () => {
   isFavorite = true;
   views.renderPopularMovies(views.gMovies);
@@ -25,6 +32,7 @@ elPageFav.addEventListener("click", () => {
   elTrending.textContent = "Favorite list";
 });
 
+// swiching pages depending on selection
 elSelect.addEventListener("change", (ev) => {
   if (ev.target.value === "week") {
     model.updateCurrentUrl(model.byWeek);
@@ -53,6 +61,7 @@ model
   .then(() => getAllLiMovies())
   .then(() => addToFav());
 
+// handling the functions of searching movies while user inputs chars
 elSearchInput.addEventListener("input", () => {
   let curData;
   if (isFavorite) {
@@ -66,8 +75,10 @@ elSearchInput.addEventListener("input", () => {
     .then((response) => views.renderPopularMovies(response));
 });
 
+// most of the searching process is on the input, in order not to repeat the code btn does minor functions
 elSearchBtn.addEventListener("click", () => {
   if (!data) {
+    alert("Please enter something");
     location.reload();
   } else {
     data.then((response) => {
@@ -77,8 +88,10 @@ elSearchBtn.addEventListener("click", () => {
     });
   }
   elSearchInput.value = "";
+  data = "";
 });
 
+//  handling function SearchById
 elSearchIdBtn.addEventListener("click", () => {
   elSpanSearch.classList.add("hidden");
   elSearchInputID.classList.remove("hidden");
@@ -105,13 +118,21 @@ const getAllLiMovies = () => {
     });
   });
 };
+
+// Handling function of saving to local storage
 const addToFav = () => {
   const elFavorites = document.querySelectorAll(".favorite");
 
   elFavorites.forEach((item) => {
     item.addEventListener("click", (event) => {
+      // New - preventing parent reaction while clicking the child
       event.stopPropagation();
       model.filterAndSaveToLocalStorage(item.id, item);
     });
   });
 };
+
+// toggling the nav menu (mobile)
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("nav-active");
+});

@@ -4,6 +4,7 @@ import { secret } from "./secret.js";
 
 const gMovies = utils.getFromStorage(secret.KEY_STORAGE);
 
+// a function that clears the content in order to hide elements while showing another ones instead
 const clearTextContent = (element) => {
   Array.from(element.children).forEach((child) => {
     clearTextContent(child);
@@ -12,12 +13,14 @@ const clearTextContent = (element) => {
 };
 const elPage2 = document.querySelector(".movie-details-page");
 
+// rendering home pgae
 const renderPopularMovies = (movies) => {
   elPage2.classList.add("hide-page2");
   const elUl = document.getElementById("movie-container");
 
   elUl.innerHTML = "";
 
+  // creating new elements
   movies.forEach((movie) => {
     const elLi = document.createElement("li");
     elLi.classList.add("each-movie");
@@ -39,6 +42,7 @@ const renderPopularMovies = (movies) => {
     elPoster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     elPoster.alt = movie.title;
 
+    // limit the words in description to prevent overflow
     const truncateOverview = (text, wordLimit) => {
       const words = text.split(" ");
       if (words.length > wordLimit) {
@@ -54,11 +58,13 @@ const renderPopularMovies = (movies) => {
     elFavorite.classList.add("favorite");
     elFavorite.setAttribute("id", movie.id);
 
+    // checking fav to show the appropriate icon
     const isFavorite = gMovies.some((fav) => fav.id === movie.id);
     elFavorite.innerHTML = isFavorite
       ? "Remove from &#x1F5A4;"
       : "Add to &#x2661";
 
+    // appending elements
     elUl.appendChild(elLi);
     elContainer.appendChild(elCard);
     elContainer.appendChild(elTitle);
@@ -68,6 +74,7 @@ const renderPopularMovies = (movies) => {
   });
 };
 
+// search movie by input name
 const searchMovieByName = (input, movies) => {
   return movies().then((response) => {
     const filteredData = response.filter((movie) =>
@@ -76,13 +83,8 @@ const searchMovieByName = (input, movies) => {
     return filteredData;
   });
 };
-const menuToggle = document.getElementById("mobile-menu");
-const navLinks = document.getElementById("nav-links");
 
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("nav-active");
-});
-
+// showing the details of a specific movie
 const renderMovieDetails = (movie) => {
   elPage2.classList.remove("hide-page2");
   const elHomePage = document.querySelector(".home-page");
@@ -103,6 +105,7 @@ const renderMovieDetails = (movie) => {
   };
   const movieRating = roundedRating(movie.vote_average);
 
+  // creating var of bg img
   const backdropPath = movie.backdrop_path
     ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
     : "fallback-image-url.jpg";

@@ -7,10 +7,12 @@ const byDay = "/trending/movie/day?";
 
 let currentUrl = allPopular;
 
+// updating the url depending on a chose of user
 const updateCurrentUrl = (url) => {
   currentUrl = url;
 };
 
+// get API of popular movies
 const getPopularMovies = async () => {
   try {
     const response = await axios.get(
@@ -24,6 +26,7 @@ const getPopularMovies = async () => {
 };
 getPopularMovies();
 
+// get API of popular movies by id
 const getMovieById = async (id) => {
   try {
     const response = await axios.get(
@@ -36,6 +39,8 @@ const getMovieById = async (id) => {
     console.error("Error fetching movies:", error);
   }
 };
+
+// get API of details of  movie by id
 function getMovieDetails(movieId) {
   return axios
     .get(
@@ -51,6 +56,7 @@ function getMovieDetails(movieId) {
     });
 }
 
+// saving to local storage in order to be able to save to fav
 const filterAndSaveToLocalStorage = (id, item) => {
   model.getPopularMovies().then((res) => {
     const checkIfExists = views.gMovies.some((movie) => {
@@ -70,6 +76,7 @@ const filterAndSaveToLocalStorage = (id, item) => {
   });
 };
 
+// removing from fav
 const removeFromFav = (id) => {
   views.gMovies = views.gMovies.filter((movie) => {
     return movie.id !== Number(id);

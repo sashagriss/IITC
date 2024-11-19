@@ -42,12 +42,10 @@ article{
     max-width: 768px;
 }
 main{
-    
     padding-inline: 2rem;
     font-family: 'outfit';
     color: var(--color-stone-600);
     font-weight: 300;
-    
 }
 h1{
     font-family: 'young';

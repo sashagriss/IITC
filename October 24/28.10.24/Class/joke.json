@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "setup": "Why did the scarecrow win an award?",
+      "punchline": "Because he was outstanding in his field!"
+    },
+    {
+      "id": 2,
+      "setup": "What do you call fake spaghetti?",
+      "punchline": "An impasta!"
+    },
+    {
+      "id": 3,
+      "setup": "Why don’t skeletons fight each other?",
+      "punchline": "They don’t have the guts!"
+    },
+    {
+      "id": 4,
+      "setup": "How does a penguin build its house?",
+      "punchline": "Igloos it together!"
+    },
+    {
+      "id": 5,
+      "setup": "Why was the math book sad?",
+      "punchline": "Because it had too many problems."
+    },
+    {
+      "id": 6,
+      "setup": "What do you call cheese that isn’t yours?",
+      "punchline": "Nacho cheese!"
+    },
+    {
+      "id": 7,
+      "setup": "Why did the bicycle fall over?",
+      "punchline": "Because it was two-tired!"
+    },
+    {
+      "id": 8,
+      "setup": "What did one wall say to the other wall?",
+      "punchline": "I'll meet you at the corner!"
+    },
+    {
+      "id": 9,
+      "setup": "Why did the coffee file a police report?",
+      "punchline": "It got mugged!"
+    },
+    {
+      "id": 10,
+      "setup": "What’s orange and sounds like a parrot?",
+      "punchline": "A carrot!"
+    }
+  ]
+  
