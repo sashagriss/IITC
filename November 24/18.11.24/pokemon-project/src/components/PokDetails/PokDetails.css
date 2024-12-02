@@ -1,0 +1,21 @@
+.buttons-description{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.btn-desc{
+    border: none;
+    background-color: white;
+    color: rgb(104, 103, 103);
+}
+
+.bold{
+    background-color: white;    
+    border: none;
+    color:black;
+    font-weight: 600;
+}
+
+

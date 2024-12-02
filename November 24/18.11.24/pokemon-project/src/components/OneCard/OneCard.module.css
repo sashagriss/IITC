@@ -1,8 +1,17 @@
 .oneCard{
-    background-color: rgb(156, 109, 200);
+    color: black;
     padding: 0.5rem;
-    margin: 1.5rem;
+    margin: 1rem;
     border-radius: 4px;
     cursor: pointer;
     list-style: none ;
 }
+
+.type-li{
+    padding: 0.3rem 1.4rem; 
+    margin: 0.4rem;
+    background-color: rgb(240, 255, 255, 0.3);
+    border-radius: 12px;
+    width: fit-content;
+}
+

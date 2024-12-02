@@ -1,0 +1,9 @@
+.Main{
+        color: white;
+        width: 425px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 1fr;
+        list-style: none;
+}
+
