@@ -14,11 +14,8 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/encrypt-password", (req, res) => {
-  const { userPassword } = req.body;
-  console.log(userPassword);
-  res.send({ userPassword });
-});
+app.post("/encrypt-password", async (req, res) => {
+  try{
 
 // Listener
 app.listen(PORT, () => {

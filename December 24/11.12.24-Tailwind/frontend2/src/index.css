@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Red Hat Display";
+    src: url("./assets/order-summary-component-main/Red_Hat_Display/RedHatDisplay-VariableFont_wght.ttf")
+      format("ttf");
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: hsl(225, 100%, 94%);
+  /* font-family:"Red Hat Display" ; */
+}
